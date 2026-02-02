@@ -1,2 +1,5 @@
-# MusicPlayer20260202.github.io
-A simple music player
+# Music Player
+A simple music player for all your needs!
+
+## Features
+Play, pause, or skip songs
