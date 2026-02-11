@@ -13,8 +13,8 @@ void draw() {
   rect(5, 310, 200, 280, 3);
   
   // Middle
-  rect(210, 5, 580, 445, 3);
-  rect(220, 10, 180, 30, 3); // Now Playing:
+  rect(210, 5, 580, 445, 3);  // Container
+  rect(220, 10, 180, 30, 3);  // Now Playing:
   
   rect(220, 45, 560, 270, 3); // Currently Playing
   rect(225, 50, 180, 30, 3);  // Song Name
@@ -29,7 +29,7 @@ void draw() {
   rect(225, 400, 180, 30, 3);  // Song Name
   
   // Right Side
-  rect(795, 5, 200, 480, 3);
+  rect(795, 5, 200, 480, 3); // Lyrics
   
   // Progress Bar
   rect(210, 455, 580, 30, 3);
