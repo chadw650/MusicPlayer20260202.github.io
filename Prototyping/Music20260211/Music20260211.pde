@@ -38,11 +38,11 @@ void draw() {
   rect(210, 490, 785, 100, 3);
   
   for (int i = 1; i <= 11; i++) {
-    int Size = 60;
-    int Padding = 7;
+    int Size = 50;
+    int Padding = 5;
     
     int xPos = (215-Size) + ((Size + Padding)*i);
-    int yPos = 510;
+    int yPos = 515;
     
     rect(xPos, yPos, Size, Size);
   }
