@@ -47,5 +47,4 @@ void draw() {
     rect(xPos, yPos, Size, Size);
   }
   
-  
 }
