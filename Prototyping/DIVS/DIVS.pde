@@ -1,10 +1,11 @@
-void settings() {
-  fullScreen(1);
-  size(displayWidth, displayHeight);
-}
+/* 
+DIVS 2D Rectangles
+*/
 
-void setup() {
-  // Left side
+fullScreen(1);
+size(displayWidth, displayHeight);
+
+// Left side
   
   // Main Container
   float MainContainerXPos = displayWidth * 5/1920;
@@ -31,19 +32,17 @@ void setup() {
   float MusicContainerYPos = displayHeight * 5/1080;
   
   float MusicContainerXSize = displayWidth * 1300/1920;
-  float MusicContainerYSize = displayHeight * 600/1080;
+  float MusicContainerYSize = displayHeight * 900/1080;
   
   rect(MusicContainerXPos, MusicContainerYPos, MusicContainerXSize, MusicContainerYSize,3);
   
   // Right Side
   
   // Lyrics Container
-  float LyricsContainerXPos = displayWidth * 300/1920;
-  float LyricsContainerYPos = displayHeight * 600/1080;
+  float LyricsContainerXPos = displayWidth * 1615/1920;
+  float LyricsContainerYPos = displayHeight * 5/1080;
   
-  rect(LyricsContainerXPos, LyricsContainerYPos,100,100,3);
-}
-
-void draw() {
-
-}
+  float LyricsContainerXSize = displayWidth * 300/1920;
+  float LyricsContainerYSize = displayHeight * 1000/1080;s
+  
+  rect(LyricsContainerXPos, LyricsContainerYPos, LyricsContainerXSize, LyricsContainerYSize, 3);
