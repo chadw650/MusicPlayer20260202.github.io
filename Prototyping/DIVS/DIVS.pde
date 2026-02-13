@@ -2,7 +2,9 @@
 DIVS 2D Rectangles
 */
 
-fullScreen(1);
+println(displayWidth, displayHeight);
+
+fullScreen();
 size(displayWidth, displayHeight);
 
 // Left side
@@ -36,6 +38,15 @@ size(displayWidth, displayHeight);
   
   rect(MusicContainerXPos, MusicContainerYPos, MusicContainerXSize, MusicContainerYSize,3);
   
+  // Progress Bar
+  float ProgressBarXPos = displayWidth * 310/1920;
+  float ProgressBarYPos = displayHeight * 910/1080;
+  
+  float ProgressBarXSize = displayWidth * 1300/1920;
+  float ProgressBarYSize = displayHeight * 25/1080;
+  
+  rect(ProgressBarXPos,ProgressBarYPos,ProgressBarXSize,ProgressBarYSize, 3);
+  
   // Right Side
   
   // Lyrics Container
@@ -43,6 +54,18 @@ size(displayWidth, displayHeight);
   float LyricsContainerYPos = displayHeight * 5/1080;
   
   float LyricsContainerXSize = displayWidth * 300/1920;
-  float LyricsContainerYSize = displayHeight * 1000/1080;s
+  float LyricsContainerYSize = displayHeight * 930/1080;
   
   rect(LyricsContainerXPos, LyricsContainerYPos, LyricsContainerXSize, LyricsContainerYSize, 3);
+  
+  
+  // Main Player
+  
+  // Music Player Container
+  float MPContainerXPos = displayWidth * 310/1920;
+  float MPContainerYPos = displayHeight * 940/1080;
+  
+  float MPContainerXSize = displayWidth * 1605/1920;
+  float MPContainerYSize = displayHeight * 135/1080;
+  
+  rect(MPContainerXPos,MPContainerYPos,MPContainerXSize,MPContainerYSize,3);
