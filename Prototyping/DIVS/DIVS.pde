@@ -34,6 +34,14 @@ void setup() {
   float MusicContainerYSize = displayHeight * 600/1080;
   
   rect(MusicContainerXPos, MusicContainerYPos, MusicContainerXSize, MusicContainerYSize,3);
+  
+  // Right Side
+  
+  // Lyrics Container
+  float LyricsContainerXPos = displayWidth * 300/1920;
+  float LyricsContainerYPos = displayHeight * 600/1080;
+  
+  rect(LyricsContainerXPos, LyricsContainerYPos,100,100,3);
 }
 
 void draw() {
