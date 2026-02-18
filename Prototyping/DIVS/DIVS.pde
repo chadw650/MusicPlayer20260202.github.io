@@ -76,3 +76,18 @@ size(displayWidth, displayHeight);
   float MPContainerYSize = AppHeight * 135/1080;
   
   rect(MPContainerXPos,MPContainerYPos,MPContainerXSize,MPContainerYSize,3);
+    
+    // Music Player Buttons
+    for (int i = 0; i <= 10; i++) {
+      float ButtonWidth = AppWidth * 110/1920;
+      float ButtonHeight = AppHeight * 110/1080;
+      
+      float Padding = 10;
+      
+      float ButtonXPos = AppWidth * (320 + (i * (ButtonWidth + Padding)))/1920;
+      float ButtonYPos = AppHeight * 955 / 1080;
+      
+      rect(ButtonXPos, ButtonYPos, ButtonWidth, ButtonHeight,3);
+    }
+    
+    
