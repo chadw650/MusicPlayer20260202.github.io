@@ -77,6 +77,12 @@ size(displayWidth, displayHeight);
   
   rect(MPContainerXPos,MPContainerYPos,MPContainerXSize,MPContainerYSize,3);
     
+    /* String[] Buttons = {
+      "Play",
+      "Pause"
+    };
+    */
+    
     // Music Player Buttons
     for (int i = 0; i <= 10; i++) {
       float ButtonWidth = AppWidth * 110/1920;
