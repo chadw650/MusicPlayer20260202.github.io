@@ -48,6 +48,14 @@ float MusicContainerYSize = AppHeight * 900/GUIHeight;
 
 rect(MusicContainerXPos, MusicContainerYPos, MusicContainerXSize, MusicContainerYSize, 3);
 
+float CurrentMusicXPos = AppWidth * 320/GUIWidth;
+float CurrentMusicYPos = AppHeight * 50/GUIHeight;
+
+float CurrentMusicXSize = AppWidth * 1280/GUIWidth;
+float CurrentMusicYSize = AppHeight * 600/GUIHeight;
+
+rect(CurrentMusicXPos, CurrentMusicYPos, CurrentMusicXSize, CurrentMusicYSize, 3);
+
 // Progress Bar
 float ProgressBarXPos = AppWidth * 310/GUIWidth;
 float ProgressBarYPos = AppHeight * 910/GUIHeight;
