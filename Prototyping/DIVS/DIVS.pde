@@ -81,8 +81,8 @@ float MPContainerYSize = AppHeight * 135/GUIHeight;
 rect(MPContainerXPos, MPContainerYPos, MPContainerXSize, MPContainerYSize, 3);
 
 /* String[] Buttons = {
- "Play",
- "Pause"
+ "Play", // 1
+ "Pause" // 2
  };
  */
 
