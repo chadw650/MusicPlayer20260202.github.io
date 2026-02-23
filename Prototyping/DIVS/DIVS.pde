@@ -63,9 +63,27 @@ float NextSong1XPos = AppWidth * 320/GUIWidth;
 float NextSong1YPos = AppHeight * 650/GUIHeight;
 
 float NextSong1XSize = AppWidth * 1280/GUIWidth;
-float NextSong1YSize = AppHeight * 100/GUIHeight;
+float NextSong1YSize = AppHeight * 75/GUIHeight;
 
 rect(NextSong1XPos, NextSong1YPos, NextSong1XSize, NextSong1YSize, 3);
+
+// Next Song 2
+float NextSong2XPos = AppWidth * 320/GUIWidth;
+float NextSong2YPos = AppHeight * 725/GUIHeight;
+
+float NextSong2XSize = AppWidth * 1280/GUIWidth;
+float NextSong2YSize = AppHeight * 75/GUIHeight;
+
+rect(NextSong2XPos, NextSong2YPos, NextSong2XSize, NextSong2YSize, 3);
+
+// Next Song 3
+float NextSong3XPos = AppWidth * 320/GUIWidth;
+float NextSong3YPos = AppHeight * 800/GUIHeight;
+
+float NextSong3XSize = AppWidth * 1280/GUIWidth;
+float NextSong3YSize = AppHeight * 75/GUIHeight;
+
+rect(NextSong3XPos, NextSong3YPos, NextSong3XSize, NextSong3YSize, 3);
 
 // Progress Bar
 float ProgressBarXPos = AppWidth * 310/GUIWidth;
