@@ -48,13 +48,24 @@ float MusicContainerYSize = AppHeight * 900/GUIHeight;
 
 rect(MusicContainerXPos, MusicContainerYPos, MusicContainerXSize, MusicContainerYSize, 3);
 
-float CurrentMusicXPos = AppWidth * 320/GUIWidth;
-float CurrentMusicYPos = AppHeight * 50/GUIHeight;
+// Current Song
+float CurrentSongXPos = AppWidth * 320/GUIWidth;
+float CurrentSongYPos = AppHeight * 50/GUIHeight;
 
-float CurrentMusicXSize = AppWidth * 1280/GUIWidth;
-float CurrentMusicYSize = AppHeight * 600/GUIHeight;
+float CurrentSongXSize = AppWidth * 1280/GUIWidth;
+float CurrentSongYSize = AppHeight * 600/GUIHeight;
 
-rect(CurrentMusicXPos, CurrentMusicYPos, CurrentMusicXSize, CurrentMusicYSize, 3);
+rect(CurrentSongXPos, CurrentSongYPos, CurrentSongXSize, CurrentSongYSize, 3);
+
+
+// Next Song 1
+float NextSong1XPos = AppWidth * 320/GUIWidth;
+float NextSong1YPos = AppHeight * 650/GUIHeight;
+
+float NextSong1XSize = AppWidth * 1280/GUIWidth;
+float NextSong1YSize = AppHeight * 100/GUIHeight;
+
+rect(NextSong1XPos, NextSong1YPos, NextSong1XSize, NextSong1YSize, 3);
 
 // Progress Bar
 float ProgressBarXPos = AppWidth * 310/GUIWidth;
