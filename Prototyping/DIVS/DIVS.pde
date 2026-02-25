@@ -66,6 +66,15 @@ float CurrentSongYSize = AppHeight * 600/GUIHeight;
 
 rect(CurrentSongXPos, CurrentSongYPos, CurrentSongXSize, CurrentSongYSize, 3);
 
+// Current song Text
+float CurrentSongTextXPos = AppWidth * 325/GUIWidth;
+float CurrentSongTextYPos = AppHeight * 55/GUIHeight;
+
+float CurrentSongTextXSize = AppWidth * 200/GUIWidth;
+float CurrentSongTextYSize = AppHeight * 35/GUIHeight;
+
+rect(CurrentSongTextXPos, CurrentSongTextYPos, CurrentSongTextXSize, CurrentSongTextYSize, 3);
+
 // NowPlayingText
 float NowPlayingTextXPos = AppWidth * 320 / GUIWidth;
 float NowPlayingTextYPos = AppHeight * 10 / GUIHeight;
