@@ -9,11 +9,16 @@ int AppWidth, AppHeight;
 float GUIWidth = 1920;
 float GUIHeight = 1080;
 
+PImage PlayButtonImg;
+
 void setup() {
   fullScreen();
   
   AppWidth = displayWidth;
   AppHeight = displayHeight;
+  
+  // Load Images
+  PlayButtonImg = loadImage("Playbutton.png");
 }
 
 void draw() {
@@ -205,16 +210,9 @@ void draw() {
     }
     
     rect(ButtonXPos, ButtonYPos, ButtonWidth, ButtonHeight, 3);
-    
-    PImage Img = null;
-    
     // Placing Button Images
     if (i == 6) { // Play Button
-      Img = loadImage("Playbutton.png");
-    }
-    
-    if (Img != null) {
-      image(Img, ButtonXPos, ButtonYPos, ButtonWidth, ButtonHeight);
+      image(PlayButtonImg, ButtonXPos, ButtonYPos, ButtonWidth, ButtonHeight);
     }
   }
   
