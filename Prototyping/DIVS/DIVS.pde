@@ -4,20 +4,27 @@
  :))
  
  */
+int AppWidth, AppHeight;
 
-println(displayWidth, displayHeight);
+float GUIWidth = 1920;
+float GUIHeight = 1080;
 
-fullScreen();
+void setup() {
+  fullScreen();
+  
+  AppWidth = displayWidth;
+  AppHeight = displayHeight;
+}
 
-int AppWidth = displayWidth;
-int AppHeight = displayHeight;
-
-int GUIWidth = 1920;
-int GUIHeight = 1080;
-
-size(displayWidth, displayHeight);
-
-// Left side
+void draw() {
+  background(255);
+  
+  fill(255);
+  stroke(0);
+  
+  boolean HoveringOverButton = false;
+  
+ // Left side
 
 // Main Container
 float MainContainerXPos = AppWidth * 5/GUIWidth;
@@ -188,25 +195,32 @@ for (int i = 1; i <= Buttons.length; i++) {
 
   float ButtonXPos = AppWidth * (205 + (i * (ButtonWidth + Padding)))/GUIWidth;
   float ButtonYPos = AppHeight * 955 / GUIHeight;
-
+  
+  // Check for hover
+  if (mouseX >= ButtonXPos && mouseX <= ButtonXPos + ButtonWidth && mouseY >= ButtonYPos && mouseY <= ButtonYPos + ButtonHeight) {
+    fill(150);
+    HoveringOverButton = true;
+  } else {
+    fill(255);
+  }
+  
   rect(ButtonXPos, ButtonYPos, ButtonWidth, ButtonHeight, 3);
   
   PImage Img = null;
   
   // Placing Button Images
-  if (i == 1) {
-    Img = loadImage("https://s.imgur.com/images/logo-1200-630.png", "png");
-  }
-  
-  if (i == 2) {
-    Img = loadImage("https://static.vecteezy.com/system/resources/previews/017/196/540/large_2x/3d-play-button-icon-transparent-background-free-png.png");
-  }
-  
   if (i == 6) { // Play Button
     Img = loadImage("Playbutton.png");
   }
   
   if (Img != null) {
     image(Img, ButtonXPos, ButtonYPos, ButtonWidth, ButtonHeight);
+  }
+}
+
+ if (HoveringOverButton == true) {
+    cursor(HAND);
+  } else {
+    cursor(ARROW);
   }
 }
