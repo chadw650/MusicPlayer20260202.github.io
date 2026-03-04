@@ -180,14 +180,33 @@ for (int i = 1; i < Buttons.length; i++) {
 }
 
 // Music Player Buttons
-for (int i = 0; i <= 10; i++) {
+for (int i = 1; i <= Buttons.length; i++) {
   float ButtonWidth = AppWidth * 110/GUIWidth;
   float ButtonHeight = AppHeight * 110/GUIHeight;
 
   float Padding = 10;
 
-  float ButtonXPos = AppWidth * (320 + (i * (ButtonWidth + Padding)))/GUIWidth;
+  float ButtonXPos = AppWidth * (205 + (i * (ButtonWidth + Padding)))/GUIWidth;
   float ButtonYPos = AppHeight * 955 / GUIHeight;
 
   rect(ButtonXPos, ButtonYPos, ButtonWidth, ButtonHeight, 3);
+  
+  PImage Img = null;
+  
+  // Placing Button Images
+  if (i == 1) {
+    Img = loadImage("https://s.imgur.com/images/logo-1200-630.png", "png");
+  }
+  
+  if (i == 2) {
+    Img = loadImage("https://static.vecteezy.com/system/resources/previews/017/196/540/large_2x/3d-play-button-icon-transparent-background-free-png.png");
+  }
+  
+  if (i == 6) { // Play Button
+    Img = loadImage("Playbutton.png");
+  }
+  
+  if (Img != null) {
+    image(Img, ButtonXPos, ButtonYPos, ButtonWidth, ButtonHeight);
+  }
 }
