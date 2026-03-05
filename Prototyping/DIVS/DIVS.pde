@@ -27,6 +27,7 @@ void draw() {
     
   fill(255);
   stroke(0);
+  strokeWeight(1);
     
   boolean HoveringOverButton = false;
     
