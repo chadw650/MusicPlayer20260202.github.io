@@ -9,6 +9,7 @@ int AppWidth, AppHeight;
 float GUIWidth = 1920;
 float GUIHeight = 1080;
 
+PImage PreviousButtonImg;
 PImage PlayButtonImg;
 PImage PauseButtonImg;
 PImage StopButtonImg;
@@ -21,6 +22,7 @@ void setup() {
   AppHeight = displayHeight;
   
   // Load Images
+  PreviousButtonImg = loadImage("PreviousSong.png");
   PlayButtonImg = loadImage("Playbutton.png");
   PauseButtonImg = loadImage("PauseButton.png");
   StopButtonImg = loadImage("StopButton.png");
@@ -219,6 +221,10 @@ void draw() {
     rect(ButtonXPos, ButtonYPos, ButtonWidth, ButtonHeight, 3);
     
     // Placing Button Images
+    
+    if (i == 4) { // Previous Button
+      image(PreviousButtonImg, ButtonXPos, ButtonYPos, ButtonWidth, ButtonHeight);
+    }
     
     if (i == 5) { // Pause Button
       image(PauseButtonImg, ButtonXPos, ButtonYPos, ButtonWidth, ButtonHeight);
