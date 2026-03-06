@@ -189,13 +189,13 @@ void draw() {
   String[] Buttons = {
    "FastForward", // 1
    "FasterForward", // 2
-   "w", // 3
+   "UnmuteSong", // 3
    "GoBackSong", // 4
    "Pause", // 5
    "Play", // 6
    "Stop", // 7
    "SkipSong", // 8
-   "w", // 9
+   "MuteSong", // 9
    "VolumeDown", // 10
    "VolumeUp", // 11
   };
