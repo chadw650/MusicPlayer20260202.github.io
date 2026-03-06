@@ -10,7 +10,7 @@ float GUIWidth = 1920;
 float GUIHeight = 1080;
 
 PImage PlayButtonImg;
-
+PImage PauseButtonImg;
 
 void setup() {
   fullScreen();
@@ -20,6 +20,7 @@ void setup() {
   
   // Load Images
   PlayButtonImg = loadImage("Playbutton.png");
+  PauseButtonImg = loadImage("PauseButton.png");
 }
 
 void draw() {
@@ -212,10 +213,18 @@ void draw() {
     }
     
     rect(ButtonXPos, ButtonYPos, ButtonWidth, ButtonHeight, 3);
+    
     // Placing Button Images
+    
+    if (i == 5) { // Pause Button
+      image(PauseButtonImg, ButtonXPos, ButtonYPos, ButtonWidth, ButtonHeight);
+    }
+    
     if (i == 6) { // Play Button
       image(PlayButtonImg, ButtonXPos, ButtonYPos, ButtonWidth, ButtonHeight);
     }
+    
+    
   }
   
   if (HoveringOverButton == true) {
