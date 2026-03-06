@@ -10,6 +10,7 @@ float GUIWidth = 1920;
 float GUIHeight = 1080;
 
 PImage FastForwardButtonImg;
+PImage FasterForwardButtonImg;
 PImage PreviousButtonImg;
 PImage PlayButtonImg;
 PImage PauseButtonImg;
@@ -24,6 +25,7 @@ void setup() {
   
   // Load Images
   FastForwardButtonImg = loadImage("FastForward.png");
+  FasterForwardButtonImg = loadImage("FasterForward.png");
   PreviousButtonImg = loadImage("PreviousSong.png");
   PlayButtonImg = loadImage("Playbutton.png");
   PauseButtonImg = loadImage("PauseButton.png");
@@ -225,6 +227,10 @@ void draw() {
     // Placing Button Images
     if (i == 1) { // Previous Button
       image(FastForwardButtonImg, ButtonXPos, ButtonYPos, ButtonWidth, ButtonHeight);
+    }
+    
+    if (i == 2) { // Previous Button
+      image(FasterForwardButtonImg, ButtonXPos, ButtonYPos, ButtonWidth, ButtonHeight);
     }
     
     if (i == 4) { // Previous Button
