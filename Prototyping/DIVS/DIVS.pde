@@ -11,6 +11,8 @@ float GUIHeight = 1080;
 
 PImage PlayButtonImg;
 PImage PauseButtonImg;
+PImage StopButtonImg;
+PImage SkipButtonImg;
 
 void setup() {
   fullScreen();
@@ -21,6 +23,8 @@ void setup() {
   // Load Images
   PlayButtonImg = loadImage("Playbutton.png");
   PauseButtonImg = loadImage("PauseButton.png");
+  StopButtonImg = loadImage("StopButton.png");
+  SkipButtonImg = loadImage("SkipSong.png");
 }
 
 void draw() {
@@ -224,7 +228,13 @@ void draw() {
       image(PlayButtonImg, ButtonXPos, ButtonYPos, ButtonWidth, ButtonHeight);
     }
     
+    if (i == 7) { // Stop Button
+      image(StopButtonImg, ButtonXPos, ButtonYPos, ButtonWidth, ButtonHeight);
+    }
     
+    if (i == 8) { // Skip Button
+      image(SkipButtonImg, ButtonXPos, ButtonYPos, ButtonWidth, ButtonHeight);
+    }
   }
   
   if (HoveringOverButton == true) {
