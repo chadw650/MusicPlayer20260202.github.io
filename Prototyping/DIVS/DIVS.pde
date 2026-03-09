@@ -1,9 +1,10 @@
 /*
  DIVS 2D Rectangles
  
- :))
+ Make sure to download the images for this to work!!!
  
- */
+*/
+ 
 int AppWidth, AppHeight;
 
 float GUIWidth = 1920;
