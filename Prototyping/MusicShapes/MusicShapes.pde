@@ -95,6 +95,10 @@ void draw() {
       image(FasterForwardButtonImg, ButtonXPos, ButtonYPos, ButtonWidth, ButtonHeight);
     }
     
+    if (i == 3) { // Unmute
+      image(VolumeUpImg, ButtonXPos, ButtonYPos, ButtonWidth, ButtonHeight);
+    }
+    
     if (i == 4) { // Previous Button
       image(PreviousButtonImg, ButtonXPos, ButtonYPos, ButtonWidth, ButtonHeight);
     }
