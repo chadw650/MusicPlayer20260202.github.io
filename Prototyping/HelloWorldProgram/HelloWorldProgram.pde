@@ -1,11 +1,15 @@
-println("Computer print");
+println("Hello World");
 println("Bananas");
 
-print("Banana");
-print("Bread");
+print("Banana ");
+print("Bread ");
+print("is ");
+print("amazing ");
 
-print("Banana");
+print("\nBanana");
 print("\tBread");
 
 print("\nBanana");
 print("\nBread");
+print("\nIs");
+print("\nGreat");
