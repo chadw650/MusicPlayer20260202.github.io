@@ -206,11 +206,6 @@ void draw() {
    "VolumeUp", // 11
   };
   
-  for (int i = 1; i < Buttons.length; i++) {
-    println(Buttons[i]);
-  }
-  
-  // Music Player Buttons
   for (int i = 1; i <= Buttons.length; i++) {
     float ButtonWidth = AppWidth * 110/GUIWidth;
     float ButtonHeight = AppHeight * 110/GUIHeight;
@@ -239,6 +234,10 @@ void draw() {
       image(FasterForwardButtonImg, ButtonXPos, ButtonYPos, ButtonWidth, ButtonHeight);
     }
     
+    if (i == 3) { // Unmute
+      image(VolumeUpImg, ButtonXPos, ButtonYPos, ButtonWidth, ButtonHeight);
+    }
+    
     if (i == 4) { // Previous Button
       image(PreviousButtonImg, ButtonXPos, ButtonYPos, ButtonWidth, ButtonHeight);
     }
@@ -259,15 +258,15 @@ void draw() {
       image(SkipButtonImg, ButtonXPos, ButtonYPos, ButtonWidth, ButtonHeight);
     }
     
-    if (i == 9) {
+    if (i == 9) { // Mute Button
       image(MuteButtonImg, ButtonXPos, ButtonYPos, ButtonWidth, ButtonHeight);
     }
     
-    if (i == 10) {
+    if (i == 10) { // Lower Volume
       image(VolumeDownImg, ButtonXPos, ButtonYPos, ButtonWidth, ButtonHeight);
     }
     
-    if (i == 11) {
+    if (i == 11) { // Higher Volume
       image(VolumeUpImg, ButtonXPos, ButtonYPos, ButtonWidth, ButtonHeight);
     }
   }
