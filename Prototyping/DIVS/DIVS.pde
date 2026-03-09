@@ -2,6 +2,7 @@
  DIVS 2D Rectangles
  
  Make sure to download the images for this to work!!!
+ I had to use void setup and void draw to add in the images, and hover effects
  
 */
  
