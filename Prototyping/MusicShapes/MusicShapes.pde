@@ -1,12 +1,136 @@
-PImage img;
+/*
+ DIVS 2D Rectangles
+ 
+ :))
+ 
+ */
+int AppWidth, AppHeight;
+
+float GUIWidth = 1920;
+float GUIHeight = 1080;
+
+PImage FastForwardButtonImg;
+PImage FasterForwardButtonImg;
+PImage PreviousButtonImg;
+PImage PlayButtonImg;
+PImage PauseButtonImg;
+PImage StopButtonImg;
+PImage SkipButtonImg;
+PImage MuteButtonImg;
+PImage VolumeDownImg;
+PImage VolumeUpImg;
 
 void setup() {
-  size(1000,1000);
-  img = loadImage("https://s.imgur.com/images/logo-1200-630.png", "png");
+  fullScreen();
+  
+  AppWidth = displayWidth;
+  AppHeight = displayHeight;
+  
+  // Load Images
+  FastForwardButtonImg = loadImage("FastForward.png");
+  FasterForwardButtonImg = loadImage("FasterForward.png");
+  PreviousButtonImg = loadImage("PreviousSong.png");
+  PlayButtonImg = loadImage("Playbutton.png");
+  PauseButtonImg = loadImage("PauseButton.png");
+  StopButtonImg = loadImage("StopButton.png");
+  SkipButtonImg = loadImage("SkipSong.png");
+  MuteButtonImg = loadImage("MuteSong.png");
+  VolumeDownImg = loadImage("LowerVolume.png");
+  VolumeUpImg = loadImage("VolumeUp.png");
 }
 
 void draw() {
-  if (img != null) {
-    image(img, 200,200, 500, 300);
+  background(255);
+    
+  fill(255);
+  stroke(0);
+  strokeWeight(1);
+
+  boolean HoveringOverButton = false;
+  
+  String[] Buttons = {
+   "FastForward", // 1
+   "FasterForward", // 2
+   "UnmuteSong", // 3
+   "GoBackSong", // 4
+   "Pause", // 5
+   "Play", // 6
+   "Stop", // 7
+   "SkipSong", // 8
+   "MuteSong", // 9
+   "VolumeDown", // 10
+   "VolumeUp", // 11
+  };
+  
+  for (int i = 1; i < Buttons.length; i++) {
+    println(Buttons[i]);
   }
+  
+  // Music Player Buttons
+  for (int i = 1; i <= Buttons.length; i++) {
+    float ButtonWidth = AppWidth * 110/GUIWidth;
+    float ButtonHeight = AppHeight * 110/GUIHeight;
+  
+    float Padding = 10;
+  
+    float ButtonXPos = AppWidth * (205 + (i * (ButtonWidth + Padding)))/GUIWidth;
+    float ButtonYPos = AppHeight * 955 / GUIHeight;
+    
+    // Check for hover
+    if (mouseX >= ButtonXPos && mouseX <= ButtonXPos + ButtonWidth && mouseY >= ButtonYPos && mouseY <= ButtonYPos + ButtonHeight) {
+      fill(150);
+      HoveringOverButton = true;
+    } else {
+      fill(255);
+    }
+    
+    rect(ButtonXPos, ButtonYPos, ButtonWidth, ButtonHeight, 3);
+    
+    // Placing Button Images
+    if (i == 1) { // Previous Button
+      image(FastForwardButtonImg, ButtonXPos, ButtonYPos, ButtonWidth, ButtonHeight);
+    }
+    
+    if (i == 2) { // Previous Button
+      image(FasterForwardButtonImg, ButtonXPos, ButtonYPos, ButtonWidth, ButtonHeight);
+    }
+    
+    if (i == 4) { // Previous Button
+      image(PreviousButtonImg, ButtonXPos, ButtonYPos, ButtonWidth, ButtonHeight);
+    }
+    
+    if (i == 5) { // Pause Button
+      image(PauseButtonImg, ButtonXPos, ButtonYPos, ButtonWidth, ButtonHeight);
+    }
+    
+    if (i == 6) { // Play Button
+      image(PlayButtonImg, ButtonXPos, ButtonYPos, ButtonWidth, ButtonHeight);
+    }
+    
+    if (i == 7) { // Stop Button
+      image(StopButtonImg, ButtonXPos, ButtonYPos, ButtonWidth, ButtonHeight);
+    }
+    
+    if (i == 8) { // Skip Button
+      image(SkipButtonImg, ButtonXPos, ButtonYPos, ButtonWidth, ButtonHeight);
+    }
+    
+    if (i == 9) {
+      image(MuteButtonImg, ButtonXPos, ButtonYPos, ButtonWidth, ButtonHeight);
+    }
+    
+    if (i == 10) {
+      image(VolumeDownImg, ButtonXPos, ButtonYPos, ButtonWidth, ButtonHeight);
+    }
+    
+    if (i == 11) {
+      image(VolumeUpImg, ButtonXPos, ButtonYPos, ButtonWidth, ButtonHeight);
+    }
+  }
+  
+  if (HoveringOverButton == true) {
+     cursor(HAND);
+   } else {
+     cursor(ARROW);
+   }
 }
