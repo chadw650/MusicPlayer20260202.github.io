@@ -18,6 +18,7 @@ PImage StopButtonImg;
 PImage SkipButtonImg;
 PImage MuteButtonImg;
 PImage VolumeDownImg;
+PImage VolumeUpImg;
 
 void setup() {
   fullScreen();
@@ -35,6 +36,7 @@ void setup() {
   SkipButtonImg = loadImage("SkipSong.png");
   MuteButtonImg = loadImage("MuteSong.png");
   VolumeDownImg = loadImage("LowerVolume.png");
+  VolumeUpImg = loadImage("VolumeUp.png");
 }
 
 void draw() {
@@ -263,6 +265,10 @@ void draw() {
     
     if (i == 10) {
       image(VolumeDownImg, ButtonXPos, ButtonYPos, ButtonWidth, ButtonHeight);
+    }
+    
+    if (i == 11) {
+      image(VolumeUpImg, ButtonXPos, ButtonYPos, ButtonWidth, ButtonHeight);
     }
   }
   
