@@ -12,6 +12,7 @@ float GUIHeight = 1080;
 PImage FastForwardButtonImg;
 PImage FasterForwardButtonImg;
 PImage PreviousButtonImg;
+PImage LoopButtonImg;
 PImage PlayButtonImg;
 PImage PauseButtonImg;
 PImage StopButtonImg;
@@ -30,6 +31,7 @@ void setup() {
   FastForwardButtonImg = loadImage("FastForward.png");
   FasterForwardButtonImg = loadImage("FasterForward.png");
   PreviousButtonImg = loadImage("PreviousSong.png");
+  LoopButtonImg = loadImage("LoopButton.png");
   PlayButtonImg = loadImage("Playbutton.png");
   PauseButtonImg = loadImage("PauseButton.png");
   StopButtonImg = loadImage("StopButton.png");
@@ -51,7 +53,7 @@ void draw() {
   String[] Buttons = {
    "FastForward", // 1
    "FasterForward", // 2
-   "UnmuteSong", // 3
+   "LoopButton", // 3
    "GoBackSong", // 4
    "Pause", // 5
    "Play", // 6
@@ -96,7 +98,7 @@ void draw() {
     }
     
     if (i == 3) { // Unmute
-      image(VolumeUpImg, ButtonXPos, ButtonYPos, ButtonWidth, ButtonHeight);
+      image(LoopButtonImg, ButtonXPos, ButtonYPos, ButtonWidth, ButtonHeight);
     }
     
     if (i == 4) { // Previous Button
