@@ -73,7 +73,7 @@ void draw() {
   
     float Padding = 10;
   
-    float ButtonXPos = AppWidth * (205 + (i * (ButtonWidth + Padding)))/GUIWidth;
+    float ButtonXPos = AppWidth * (180 + (i * (ButtonWidth + Padding)))/GUIWidth;
     float ButtonYPos = AppHeight * 955 / GUIHeight;
     
     // Check for hover
