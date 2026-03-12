@@ -1,56 +1,25 @@
-/*
- DIVS 2D Rectangles
- 
- :))
- 
- */
-int AppWidth, AppHeight;
-
 float GUIWidth = 1920;
 float GUIHeight = 1080;
-
-PImage FastForwardButtonImg;
-PImage FasterForwardButtonImg;
-PImage PreviousButtonImg;
-PImage LoopButtonImg;
-PImage PlayButtonImg;
-PImage PauseButtonImg;
-PImage StopButtonImg;
-PImage SkipButtonImg;
-PImage MuteButtonImg;
-PImage VolumeDownImg;
-PImage VolumeUpImg;
-
-void setup() {
-  fullScreen();
   
-  AppWidth = displayWidth;
-  AppHeight = displayHeight;
+int AppWidth = displayWidth;
+int AppHeight = displayHeight;
+
+fullScreen();
   
   // Load Images
-  FastForwardButtonImg = loadImage("FastForward.png");
-  FasterForwardButtonImg = loadImage("FasterForward.png");
-  PreviousButtonImg = loadImage("PreviousSong.png");
-  LoopButtonImg = loadImage("LoopButton.png");
-  PlayButtonImg = loadImage("Playbutton.png");
-  PauseButtonImg = loadImage("PauseButton.png");
-  StopButtonImg = loadImage("StopButton.png");
-  SkipButtonImg = loadImage("SkipSong.png");
-  MuteButtonImg = loadImage("MuteSong.png");
-  VolumeDownImg = loadImage("LowerVolume.png");
-  VolumeUpImg = loadImage("VolumeUp.png");
-}
-
-void draw() {
-  background(255);
-    
-  fill(255);
-  stroke(0);
-  strokeWeight(1);
-
-  boolean HoveringOverButton = false;
+PImage FastForwardButtonImg = loadImage("FastForward.png");
+PImage FasterForwardButtonImg = loadImage("FasterForward.png");
+PImage PreviousButtonImg = loadImage("PreviousSong.png");
+PImage LoopButtonImg = loadImage("LoopButton.png");
+PImage PlayButtonImg = loadImage("Playbutton.png");
+PImage PauseButtonImg = loadImage("PauseButton.png");
+PImage StopButtonImg = loadImage("StopButton.png");
+PImage SkipButtonImg = loadImage("SkipSong.png");
+PImage MuteButtonImg = loadImage("MuteSong.png");
+PImage VolumeDownImg = loadImage("LowerVolume.png");
+PImage VolumeUpImg = loadImage("VolumeUp.png");
   
-  String[] Buttons = {
+String[] Buttons = {
    "FastForward", // 1
    "FasterForward", // 2
    "LoopButton", // 3
@@ -62,14 +31,14 @@ void draw() {
    "MuteSong", // 9
    "VolumeDown", // 10
    "VolumeUp", // 11
-  };
+};
   
-  for (int i = 1; i < Buttons.length; i++) {
+for (int i = 1; i < Buttons.length; i++) {
     println(Buttons[i]);
-  }
+}
   
   // Music Player Buttons
-  for (int i = 1; i <= Buttons.length; i++) {
+for (int i = 1; i <= Buttons.length; i++) {
     float ButtonWidth = AppWidth * 110/GUIWidth;
     float ButtonHeight = AppHeight * 110/GUIHeight;
   
@@ -77,14 +46,6 @@ void draw() {
   
     float ButtonXPos = AppWidth * (180 + (i * (ButtonWidth + Padding)))/GUIWidth;
     float ButtonYPos = AppHeight * 955 / GUIHeight;
-    
-    // Check for hover
-    if (mouseX >= ButtonXPos && mouseX <= ButtonXPos + ButtonWidth && mouseY >= ButtonYPos && mouseY <= ButtonYPos + ButtonHeight) {
-      fill(150);
-      HoveringOverButton = true;
-    } else {
-      fill(255);
-    }
     
     rect(ButtonXPos, ButtonYPos, ButtonWidth, ButtonHeight, 3);
     
@@ -133,10 +94,3 @@ void draw() {
       image(VolumeUpImg, ButtonXPos, ButtonYPos, ButtonWidth, ButtonHeight);
     }
   }
-  
-  if (HoveringOverButton == true) {
-     cursor(HAND);
-   } else {
-     cursor(ARROW);
-   }
-}
