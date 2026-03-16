@@ -8,7 +8,7 @@ String upArrow = "../../";
 String DependeciesFolder = "Dependecies";
 String ImagesFolder = "Images";
 String ImageName = "Roblox";
-String FileExtension = "";
+String FileExtension = ".png";
 
 PImage Image = loadImage("");
 
