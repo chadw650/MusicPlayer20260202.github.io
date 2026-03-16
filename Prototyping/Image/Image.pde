@@ -12,6 +12,7 @@ String FileExtension = ".png";
 String open = "/"
 
 // Concatenation
+String Pathway = "";
 
 PImage Image = loadImage("");
 
