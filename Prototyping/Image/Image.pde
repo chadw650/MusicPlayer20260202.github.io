@@ -5,8 +5,8 @@
 fullScreen();
 
 String upArrow = "../../";
-String DependeciesFolder = "Dependecies/";
-String ImagesFolder = "Images/";
+String DependeciesFolder = "Dependecies";
+String ImagesFolder = "Images";
 
 PImage Image = loadImage("");
 
