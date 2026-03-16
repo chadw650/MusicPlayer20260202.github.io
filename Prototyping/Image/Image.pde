@@ -9,7 +9,7 @@ String DependeciesFolder = "Dependecies";
 String ImagesFolder = "Images";
 String ImageName = "Roblox";
 String FileExtension = ".png";
-String open = "/"
+String open = "/";
 
 // Concatenation
 String Pathway = "";
