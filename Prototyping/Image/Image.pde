@@ -7,7 +7,7 @@ fullScreen();
 String upArrow = "../../";
 String DependeciesFolder = "Dependecies";
 String ImagesFolder = "Images";
-String ImageName = ""
+String ImageName = "Roblox";
 
 PImage Image = loadImage("");
 
