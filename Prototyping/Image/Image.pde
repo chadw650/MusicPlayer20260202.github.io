@@ -11,6 +11,8 @@ String ImageName = "Roblox";
 String FileExtension = ".png";
 String open = "/"
 
+// Concatenation
+
 PImage Image = loadImage("");
 
 image(Image, 1, 1);
