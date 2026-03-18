@@ -44,5 +44,5 @@ for (int i = 0; i < ImageName.length; i++) {
 }
 
 for (int i = 0; i < ImageName.length; i++) {
-  image(Images[i], CurrentSongXPos, CurrentSongYPos, CurrentSongXSize, CurrentSongYSize);
+  image(Images[i], CurrentSongXPos, CurrentSongYPos, CurrentSongXSize+1, CurrentSongYSize+1);
 }
