@@ -4,6 +4,9 @@
 // Display
 fullScreen();
 
+float DisplayWidth = displayWidth;
+float DisplayHeight = displayHeight;
+
 String upArrow = "..";
 String DependenciesFolder = "Dependencies";
 String ImagesFolder = "Images";
@@ -28,5 +31,8 @@ for (int i = 0; i < ImageName.length; i++) {
 }
 
 for (int i = 0; i < ImageName.length; i++) {
-  image(Images[i], 1, 1);
+  float X = random(0, DisplayWidth);
+  float Y = random(0, DisplayHeight/2);
+  
+  image(Images[i], X, Y);
 }
