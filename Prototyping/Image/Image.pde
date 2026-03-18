@@ -7,6 +7,9 @@ fullScreen();
 float DisplayWidth = displayWidth;
 float DisplayHeight = displayHeight;
 
+float GUIWidth = 1920;
+float GUIHeight = 1080;
+
 String upArrow = "..";
 String DependenciesFolder = "Dependencies";
 String ImagesFolder = "Images";
@@ -17,6 +20,16 @@ String[] ImageName = {
   "Roblox",
   "Bike",
 };
+
+// Div
+
+float CurrentSongXPos = DisplayWidth * 320/GUIWidth;
+float CurrentSongYPos = DisplayHeight * 50/GUIHeight;
+  
+float CurrentSongXSize = DisplayWidth * 1280/GUIWidth;
+float CurrentSongYSize = DisplayHeight * 600/GUIHeight;
+  
+rect(CurrentSongXPos, CurrentSongYPos, CurrentSongXSize, CurrentSongYSize, 3);
 
 // Concatenation
 
@@ -31,8 +44,5 @@ for (int i = 0; i < ImageName.length; i++) {
 }
 
 for (int i = 0; i < ImageName.length; i++) {
-  float X = random(0, DisplayWidth);
-  float Y = random(0, DisplayHeight/2);
-  
-  image(Images[i], X, Y);
+  image(Images[i], CurrentSongXPos, CurrentSongYPos, CurrentSongXSize, CurrentSongYSize);
 }
