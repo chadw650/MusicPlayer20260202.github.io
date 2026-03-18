@@ -44,5 +44,15 @@ for (int i = 0; i < ImageName.length; i++) {
 }
 
 for (int i = 0; i < ImageName.length; i++) {
-  image(Images[i], CurrentSongXPos, CurrentSongYPos, CurrentSongXSize+1, CurrentSongYSize+1);
+  float Width = CurrentSongXSize+1;
+  float Height = CurrentSongYSize+1;
+  
+  if (i == 0) {
+    float AspectWidth = 800;
+    float AspectHeight = 800;
+    
+    
+  }
+  
+  image(Images[i], CurrentSongXPos, CurrentSongYPos, Width, Height);
 }
