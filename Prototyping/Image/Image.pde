@@ -3,6 +3,7 @@
 
 // Display
 fullScreen();
+smooth();
 
 float DisplayWidth = displayWidth;
 float DisplayHeight = displayHeight;
@@ -47,12 +48,16 @@ for (int i = 0; i < ImageName.length; i++) {
   float Width = CurrentSongXSize+1;
   float Height = CurrentSongYSize+1;
   
-  if (i == 0) {
-    float AspectWidth = 800;
-    float AspectHeight = 800;
-    
-    
-  }
+  float OriginalW = Images[i].width;
+  float OriginalH = Images[i].height;
   
-  image(Images[i], CurrentSongXPos, CurrentSongYPos, Width, Height);
+  float scale = min(Width / OriginalW, Height / OriginalH);
+  
+  Width = OriginalW * scale;
+  Height = OriginalH * scale;
+  
+  float XOffset = CurrentSongXPos + (CurrentSongXSize - Width) / 2;
+  float YOffset = CurrentSongYPos + (CurrentSongYSize - Height) / 2;
+  
+  image(Images[i], XOffset, YOffset, Width, Height);
 }
