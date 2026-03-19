@@ -44,6 +44,9 @@ for (int i = 0; i < ImageName.length; i++) {
   Images[i] = loadImage(Pathway[i]);
 }
 
+float Random = int(random(0, ImageName.length));
+println(Random);
+
 for (int i = 0; i < ImageName.length; i++) {
   float Width = CurrentSongXSize+1;
   float Height = CurrentSongYSize+1;
@@ -53,11 +56,15 @@ for (int i = 0; i < ImageName.length; i++) {
   
   float scale = min(Width / OriginalW, Height / OriginalH);
   
+  println(scale);
+  
   Width = OriginalW * scale;
   Height = OriginalH * scale;
   
   float XOffset = CurrentSongXPos + (CurrentSongXSize - Width) / 2;
   float YOffset = CurrentSongYPos + (CurrentSongYSize - Height) / 2;
   
-  image(Images[i], XOffset, YOffset, Width, Height);
+  if (Random == i) {
+     image(Images[i], XOffset, YOffset, Width, Height);
+  }
 }
