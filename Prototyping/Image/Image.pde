@@ -45,11 +45,12 @@ for (int i = 0; i < ImageName.length; i++) {
 }
 
 float Random = int(random(0, ImageName.length));
-println(Random);
+
+// while() {}
 
 for (int i = 0; i < ImageName.length; i++) {
-  float Width = CurrentSongXSize+1;
-  float Height = CurrentSongYSize+1;
+  float Width = CurrentSongXSize;
+  float Height = CurrentSongYSize;
   
   float OriginalW = Images[i].width;
   float OriginalH = Images[i].height;
@@ -58,13 +59,13 @@ for (int i = 0; i < ImageName.length; i++) {
   
   println(scale);
   
-  Width = OriginalW * scale;
-  Height = OriginalH * scale;
+  float NewWidth = OriginalW * scale;
+  float NewHeight = OriginalH * scale;
   
-  float XOffset = CurrentSongXPos + (CurrentSongXSize - Width) / 2;
-  float YOffset = CurrentSongYPos + (CurrentSongYSize - Height) / 2;
+  float XOffset = CurrentSongXPos + (CurrentSongXSize - NewWidth) / 2;
+  float YOffset = CurrentSongYPos + (CurrentSongYSize - NewHeight) / 2;
   
   if (Random == i) {
-     image(Images[i], XOffset, YOffset, Width, Height);
+     image(Images[i], XOffset, YOffset, NewWidth, NewHeight);
   }
 }
