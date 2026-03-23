@@ -66,6 +66,8 @@ for (int i = 0; i < ImageName.length; i++) {
   float YOffset = CurrentSongYPos + (CurrentSongYSize - NewHeight) / 2;
   
   if (Random == i) {
-     image(Images[i], XOffset, YOffset, NewWidth, NewHeight);
+    if (Images[i] != null) {
+      image(Images[i], XOffset, YOffset, NewWidth, NewHeight);
+    }
   }
 }
