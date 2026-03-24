@@ -40,7 +40,7 @@ String[] Pathway = new String[ImageName.length];
 PImage[] Images = new PImage[ImageName.length];
 
 for (int i = 0; i < ImageName.length; i++) {
-  Pathway[i] = ImageDirectory + ImageName[i] + FileExtension;
+  Pathway[i] = sketchPath(ImageDirectory + ImageName[i] + FileExtension);
   Images[i] = loadImage(Pathway[i]);
 }
 
