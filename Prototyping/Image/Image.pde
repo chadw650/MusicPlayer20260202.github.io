@@ -39,9 +39,19 @@ String ImageDirectory = upArrow + open + upArrow + open + DependenciesFolder + o
 String[] Pathway = new String[ImageName.length];
 PImage[] Images = new PImage[ImageName.length];
 
+
+String FallbackPathway = ImageDirectory + "Bike" + FileExtension;
+
 for (int i = 0; i < ImageName.length; i++) {
-  Pathway[i] = sketchPath(ImageDirectory + ImageName[i] + FileExtension);
-  Images[i] = loadImage(Pathway[i]);
+  if (sketchPath(ImageDirectory + ImageName[i] + FileExtension) == null) {
+    Pathway[i] = FallbackPathway;
+  } else {
+    Pathway[i] = sketchPath(ImageDirectory + ImageName[i] + FileExtension);
+  }
+  
+  if (Pathway[i] != null) {
+    Images[i] = loadImage(Pathway[i]);
+  }
 }
 
 float Random = int(random(0, ImageName.length));
