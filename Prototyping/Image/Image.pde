@@ -43,14 +43,11 @@ PImage[] Images = new PImage[ImageName.length];
 String FallbackPathway = ImageDirectory + "Bike" + FileExtension;
 
 for (int i = 0; i < ImageName.length; i++) {
-  if (sketchPath(ImageDirectory + ImageName[i] + FileExtension) == null) {
-    Pathway[i] = FallbackPathway;
-  } else {
-    Pathway[i] = sketchPath(ImageDirectory + ImageName[i] + FileExtension);
-  }
-  
-  if (Pathway[i] != null) {
-    Images[i] = loadImage(Pathway[i]);
+  Pathway[i] = sketchPath(ImageDirectory + ImageName[i] + FileExtension);
+  Images[i] = loadImage(Pathway[i]);
+   
+  if (Images[i] == null) {
+    Images[i] = loadImage(FallbackPathway);
   }
 }
 
