@@ -1,3 +1,5 @@
+// Make sure to download the images!!!!!
+
 float GUIWidth = 1920;
 float GUIHeight = 1080;
   
