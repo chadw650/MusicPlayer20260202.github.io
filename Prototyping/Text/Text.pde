@@ -53,3 +53,7 @@ float GUIHeight = 1080;
   float LyricsTitleYSize = AppHeight * 35/GUIHeight;
   
   rect(LyricsTitleXPos, LyricsTitleYPos, LyricsTitleXSize, LyricsTitleYSize, 3);
+  
+// Strings
+
+// Fonts
