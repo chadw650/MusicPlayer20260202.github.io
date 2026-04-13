@@ -55,5 +55,14 @@ float GUIHeight = 1080;
   rect(LyricsTitleXPos, LyricsTitleYPos, LyricsTitleXSize, LyricsTitleYSize, 3);
   
 // Strings
+String Title = "Hello";
 
 // Fonts
+println("Start of Console");
+String FontList[] = PFont.list();
+
+float FontSize = AppHeight;
+PFont Font;
+String LeelawadeeUIBold = "LeelawadeeUI-Bold";
+
+Font = createFont(LeelawadeeUIBold, FontSize);
