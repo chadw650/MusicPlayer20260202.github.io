@@ -66,3 +66,12 @@ PFont Font;
 String LeelawadeeUIBold = "LeelawadeeUI-Bold";
 
 Font = createFont(LeelawadeeUIBold, FontSize);
+
+// Drawing Text
+color White = #FFFFFFFF;
+color Black = #030000;
+color DarkPurple = #301950;
+color ResetInk = White;
+
+fill(Black);
+text(Title, CurrentSongTextXPos, CurrentSongTextYPos, CurrentSongTextXSize, CurrentSongTextYSize);
