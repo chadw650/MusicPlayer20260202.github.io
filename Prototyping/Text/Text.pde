@@ -65,9 +65,10 @@ float FontSize = AppHeight;
 PFont Font;
 String LeelawadeeUIBold = "Leelawadee UI Bold";
 
-float FontDiv = CurrentSongTextYSize;
-float FontDivAR = FontSize / FontDiv;
-FontSize = FontDivAR;
+float FontDiv = CurrentSongTextXSize;
+float FontDivAR = 35 / FontDiv;
+FontSize = int(FontDivAR*FontDiv);
+println(FontSize);
 
 Font = createFont(LeelawadeeUIBold, FontSize);
 
