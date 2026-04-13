@@ -61,9 +61,13 @@ String Title = "Hello";
 println("Start of Console");
 String FontList[] = PFont.list();
 
-float FontSize = 36;
+float FontSize = AppHeight;
 PFont Font;
 String LeelawadeeUIBold = "Leelawadee UI Bold";
+
+float FontDiv = CurrentSongTextYSize;
+float FontDivAR = FontSize / FontDiv;
+FontSize = FontDivAR;
 
 Font = createFont(LeelawadeeUIBold, FontSize);
 
