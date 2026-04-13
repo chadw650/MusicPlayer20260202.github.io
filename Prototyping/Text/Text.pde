@@ -63,7 +63,7 @@ String FontList[] = PFont.list();
 
 float FontSize = AppHeight;
 PFont Font;
-String LeelawadeeUIBold = "LeelawadeeUI-Bold";
+String LeelawadeeUIBold = "Leelawadee UI Bold";
 
 Font = createFont(LeelawadeeUIBold, FontSize);
 
@@ -74,4 +74,5 @@ color DarkPurple = #301950;
 color ResetInk = White;
 
 fill(Black);
+textFont(Font);
 text(Title, CurrentSongTextXPos, CurrentSongTextYPos, CurrentSongTextXSize, CurrentSongTextYSize);
