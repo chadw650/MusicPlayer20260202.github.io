@@ -67,7 +67,8 @@ String LeelawadeeUIBold = "Leelawadee UI Bold";
 
 float FontDiv = CurrentSongTextXSize;
 float FontDivAR = 35 / FontDiv;
-FontSize = int(FontDivAR*FontDiv);
+float TextAdjustment = 0.9;
+FontSize = int((FontDivAR*FontDiv)*TextAdjustment);
 println(FontSize);
 
 Font = createFont(LeelawadeeUIBold, FontSize);
@@ -80,7 +81,7 @@ color ResetInk = White;
 
 
 fill(Black);
-textAlign(CENTER,CENTER);
+textAlign(CENTER, CENTER);
 
 textFont(Font);
 text(Title, CurrentSongTextXPos, CurrentSongTextYPos, CurrentSongTextXSize, CurrentSongTextYSize);
