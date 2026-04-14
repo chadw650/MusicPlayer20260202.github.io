@@ -62,20 +62,20 @@ float FontSize = AppHeight;
 PFont Font;
 String LeelawadeeUIBold = "Leelawadee UI Bold";
 
-float FontSizes[] = new float[2];
+float FontSizes[] = new float[3];
 
-for (int i = 0; i <= 1; i++) {
+for (int i = 0; i <= 2; i++) {
   float FontDiv = CurrentSongTextYSize;
   
-  if (i == 1) {
+  if (i == 0) {
     FontDiv = CurrentSongTextYSize;
   };
   
-  if (i == 2) {
+  if (i == 1) {
     FontDiv = HomeButtonYSize;
   };
   
-  float FontDivAR = FontSize / FontDiv;
+  float FontDivAR = AppHeight / FontDiv;
   float TextAdjustment = 0.9;
   FontSize = int((FontDivAR)*TextAdjustment);
   
@@ -85,7 +85,7 @@ for (int i = 0; i <= 1; i++) {
 
 println(FontSize);
 
-Font = createFont(LeelawadeeUIBold, FontSize);
+Font = createFont(LeelawadeeUIBold, 32);
 
 // Drawing Text
 color White = #FFFFFFFF;
