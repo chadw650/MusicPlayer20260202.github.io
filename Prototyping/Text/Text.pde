@@ -78,6 +78,9 @@ color Black = #030000;
 color DarkPurple = #301950;
 color ResetInk = White;
 
+
 fill(Black);
+textAlign(CENTER,CENTER);
+
 textFont(Font);
 text(Title, CurrentSongTextXPos, CurrentSongTextYPos, CurrentSongTextXSize, CurrentSongTextYSize);
