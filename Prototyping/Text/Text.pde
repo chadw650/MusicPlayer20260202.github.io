@@ -58,17 +58,31 @@ float GUIHeight = 1080;
 String Title = "Hello";
 
 // Fonts
-println("Start of Console");
-String FontList[] = PFont.list();
-
 float FontSize = AppHeight;
 PFont Font;
 String LeelawadeeUIBold = "Leelawadee UI Bold";
 
-float FontDiv = CurrentSongTextXSize;
-float FontDivAR = 35 / FontDiv;
-float TextAdjustment = 0.9;
-FontSize = int((FontDivAR*FontDiv)*TextAdjustment);
+float FontSizes[] = new float[2];
+
+for (int i = 0; i <= 1; i++) {
+  float FontDiv = CurrentSongTextYSize;
+  
+  if (i == 1) {
+    FontDiv = CurrentSongTextYSize;
+  };
+  
+  if (i == 2) {
+    FontDiv = HomeButtonYSize;
+  };
+  
+  float FontDivAR = FontSize / FontDiv;
+  float TextAdjustment = 0.9;
+  FontSize = int((FontDivAR)*TextAdjustment);
+  
+  FontSizes[i] = FontSize;
+}
+
+
 println(FontSize);
 
 Font = createFont(LeelawadeeUIBold, FontSize);
@@ -83,5 +97,8 @@ color ResetInk = White;
 fill(Black);
 textAlign(CENTER, CENTER);
 
-textFont(Font);
+textFont(Font, FontSizes[1]);
 text(Title, CurrentSongTextXPos, CurrentSongTextYPos, CurrentSongTextXSize, CurrentSongTextYSize);
+
+textFont(Font, FontSizes[2]);
+text(Title, HomeButtonXPos, HomeButtonYPos, HomeButtonXSize, HomeButtonYSize);
