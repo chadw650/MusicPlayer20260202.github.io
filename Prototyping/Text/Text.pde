@@ -56,6 +56,7 @@ float GUIHeight = 1080;
   
 // Strings
 String Title = "Hello";
+String HomeButton = "Home";
 
 // Fonts
 float FontSize = AppHeight;
@@ -64,26 +65,32 @@ String LeelawadeeUIBold = "Leelawadee UI Bold";
 
 float FontSizes[] = new float[3];
 
-for (int i = 0; i <= 2; i++) {
-  float FontDiv = CurrentSongTextYSize;
+String[] labels = { Title, HomeButton };
+
+float[]  targetWidths = { CurrentSongTextXSize, HomeButtonXSize };
+float[]  targetHeights = { CurrentSongTextYSize, HomeButtonYSize };
+
+float[]  targetX = { CurrentSongTextXPos, HomeButtonXPos };
+float[]  targetY = { CurrentSongTextYPos, HomeButtonYPos };
+
+for (int i = 0; i < labels.length; i++) {
+  float targetHeight = targetHeights[i];
+  float targetWidth = targetWidths[i]; 
+  String textToMeasure = labels[i];
+
+  float baseSize = 100.0;
+  textSize(baseSize);
+  float currentWidth = textWidth(textToMeasure);
+
+  float sizeToFitWidth = baseSize * (targetWidth / currentWidth);
+  float sizeToFitHeight = targetHeight * 0.85;
   
-  if (i == 0) {
-    FontDiv = CurrentSongTextYSize;
-  };
-  
-  if (i == 1) {
-    FontDiv = HomeButtonYSize;
-  };
-  
-  float FontDivAR = AppHeight / FontDiv;
-  float TextAdjustment = 0.9;
-  FontSize = int((FontDivAR)*TextAdjustment);
-  
-  FontSizes[i] = FontSize;
+  if (sizeToFitWidth < sizeToFitHeight) {
+    FontSizes[i] = int(sizeToFitWidth);
+  } else {
+    FontSizes[i] = int(sizeToFitHeight);
+  }
 }
-
-
-println(FontSize);
 
 Font = createFont(LeelawadeeUIBold, 32);
 
@@ -93,12 +100,10 @@ color Black = #030000;
 color DarkPurple = #301950;
 color ResetInk = White;
 
-
 fill(Black);
 textAlign(CENTER, CENTER);
 
-textFont(Font, FontSizes[1]);
-text(Title, CurrentSongTextXPos, CurrentSongTextYPos, CurrentSongTextXSize, CurrentSongTextYSize);
-
-textFont(Font, FontSizes[2]);
-text(Title, HomeButtonXPos, HomeButtonYPos, HomeButtonXSize, HomeButtonYSize);
+for (int i = 0; i < labels.length; i++) {
+  textFont(Font, FontSizes[i]);
+  text(labels[i], targetX[i], targetY[i], targetWidths[i], targetHeights[i]);
+}
