@@ -59,7 +59,6 @@ String Title = "Hello";
 String HomeButton = "Home";
 
 // Fonts
-float FontSize = AppHeight;
 PFont Font;
 String LeelawadeeUIBold = "Leelawadee UI Bold";
 
