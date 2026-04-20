@@ -15,4 +15,5 @@ AudioPlayer[] soundEffects = new AudioPlayer[numberOfSFX]
 int CurrentSong = numberOfSongs - numberOfSongs;
 
 // Display
-fullScreen();
+size(700, 700);
+// fullScreen();
