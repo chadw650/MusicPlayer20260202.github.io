@@ -11,3 +11,5 @@ Minim minim;
 int numberOfSongs = 1;
 int numberOfSFX = 1;
 AudioPlayer[] Playlist = new AudioPlayer[numberOfSongs];
+AudioPlayer[] soundEffects = new AudioPlayer[numberOfSFX]
+int CurrentSong = numberOfSongs - numberOfSongs;
