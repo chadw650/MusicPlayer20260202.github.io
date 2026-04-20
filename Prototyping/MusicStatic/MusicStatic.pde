@@ -16,4 +16,6 @@ int CurrentSong = numberOfSongs - numberOfSongs;
 
 // Display
 size(700, 700);
+int AppHeight = DisplayHeight;
+int AppWidth = DisplayWidth;
 // fullScreen();
