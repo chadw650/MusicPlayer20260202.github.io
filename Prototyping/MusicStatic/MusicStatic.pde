@@ -7,3 +7,7 @@ import ddf.minim.spi.*;
 import ddf.minim.ugens.*;
 
 // Variables
+Minim minim;
+int numberOfSongs = 1;
+int numberOfSFX = 1;
+AudioPlayer[] Playlist = new AudioPlayer[numberOfSongs];
