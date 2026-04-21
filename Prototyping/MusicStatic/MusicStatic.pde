@@ -19,3 +19,5 @@ size(700, 700);
 int AppHeight = DisplayHeight;
 int AppWidth = DisplayWidth;
 // fullScreen();
+
+minim = new Minim(this);
