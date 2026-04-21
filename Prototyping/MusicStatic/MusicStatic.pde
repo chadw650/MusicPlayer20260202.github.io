@@ -34,3 +34,7 @@ String SFX1 = SFXFolder + "MouseClick.mp3";
 
 playlist[CurrentSong] = minim.loadFile(Song1);
 soundEffects[CurrentSong] = minim.loadFile(SFX1);
+
+void setup() {
+  playlist[CurrentSong].play();
+}
