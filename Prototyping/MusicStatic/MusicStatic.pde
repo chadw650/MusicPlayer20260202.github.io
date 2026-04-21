@@ -16,8 +16,8 @@ int CurrentSong = numberOfSongs - numberOfSongs;
 
 // Display
 size(700, 700);
-int AppHeight = DisplayHeight;
-int AppWidth = DisplayWidth;
+int AppHeight = displayHeight;
+int AppWidth = displayWidth;
 // fullScreen();
 
 minim = new Minim(this);
@@ -35,6 +35,8 @@ String SFX1 = SFXFolder + "MouseClick.mp3";
 playlist[CurrentSong] = minim.loadFile(Song1);
 soundEffects[CurrentSong] = minim.loadFile(SFX1);
 
-void setup() {
-  playlist[CurrentSong].play();
+if (playlist[CurrentSong] != null) {
+    playlist[CurrentSong].play();
+} else {
+    println("Error loading song: " + Song1);
 }
