@@ -10,7 +10,7 @@ import ddf.minim.ugens.*;
 Minim minim;
 int numberOfSongs = 1;
 int numberOfSFX = 1;
-AudioPlayer[] Playlist = new AudioPlayer[numberOfSongs];
+AudioPlayer[] playlist = new AudioPlayer[numberOfSongs];
 AudioPlayer[] soundEffects = new AudioPlayer[numberOfSFX]
 int CurrentSong = numberOfSongs - numberOfSongs;
 
@@ -21,3 +21,12 @@ int AppWidth = DisplayWidth;
 // fullScreen();
 
 minim = new Minim(this);
+
+String upArrow = "../../";
+String dependencies = upArrow + "Dependencies/";
+String MusicFolder = dependencies + "Music/";
+String SFXFolder = dependencies + "SoundFX/";
+
+// Songs/SFX
+playlist[0] = minim.loadFile(MusicFolder + "Aerie.mp3");
+soundEffects[0] = minim.loadFile(SFXFolder + "MouseClick.mp3");
