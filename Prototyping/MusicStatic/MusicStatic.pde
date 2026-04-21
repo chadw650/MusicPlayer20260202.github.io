@@ -37,6 +37,7 @@ soundEffects[CurrentSong] = minim.loadFile(SFX1);
 
 if (playlist[CurrentSong] != null) {
     playlist[CurrentSong].play();
+    printArray(playlist);
 } else {
     println("Error loading song: " + Song1);
 }
