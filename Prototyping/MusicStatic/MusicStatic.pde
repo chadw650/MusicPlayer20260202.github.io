@@ -28,5 +28,9 @@ String MusicFolder = dependencies + "Music/";
 String SFXFolder = dependencies + "SoundFX/";
 
 // Songs/SFX
-playlist[CurrentSong] = minim.loadFile(MusicFolder + "Aerie.mp3");
-soundEffects[CurrentSong] = minim.loadFile(SFXFolder + "MouseClick.mp3");
+String Song1 = MusicFolder + "Aerie.mp3";
+
+String SFX1 = SFXFolder + "MouseClick.mp3";
+
+playlist[CurrentSong] = minim.loadFile(Song1);
+soundEffects[CurrentSong] = minim.loadFile(SFX1);
