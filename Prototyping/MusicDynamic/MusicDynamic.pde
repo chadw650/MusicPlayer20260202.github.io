@@ -43,12 +43,33 @@ void setup() {
   soundEffects[currentSong] = minim.loadFile(SFX1);
 
   if (playlist[currentSong] != null) {
-    playlist[currentSong].loop();
+    playlist[currentSong].play();
   } else {
     println("Error loading song: " + SongName[currentSong]);
+    printArray(SongName);
   }
 }
 
 void draw() {
   background(0);
 }
+
+ /* Key Board Short Cuts ... learning what the Music Buttons could be
+   Note: CAP Lock with ||
+   if ( key==? || key==? ) ; //'' only
+   -
+   if ( key==CODED || keyCode==SpecialKey ) ; //Special Keys abriviated CAPS
+   -
+   All Music Player Features are built out of these Minim AudioPlayer() functions
+   .isPlaying()
+   .isMuted()
+   .loop(0), parameter is number of iterations after play
+   .loop(), parameter is infinite interations
+   .play(), parameter is built-in skip (milli-seconds or crystal-time)
+   .pause()
+   .rewind()
+   .skip()
+   .unmute()
+   .mute()
+   
+ */
