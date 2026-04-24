@@ -43,16 +43,27 @@ void setup() {
   soundEffects[currentSong] = minim.loadFile(SFX1);
 
   if (playlist[currentSong] != null) {
-    playlist[currentSong].play();
+    // playlist[currentSong].play();
   } else {
     println("Error loading song: " + SongName[currentSong]);
     printArray(SongName);
   }
+  
+  if (key=='p' || key=='P') playlist[currentSong].loop(0);
+  
+  if (key=='O' || key=='o') {
+    if (playlist[currentSong].isPlaying()) {
+      playlist[currentSong].pause();
+    } else {
+      playlist[currentSong].play();
+    };
+  };
 }
 
 void draw() {
   background(0);
 }
+
 
  /* Key Board Short Cuts ... learning what the Music Buttons could be
    Note: CAP Lock with ||
