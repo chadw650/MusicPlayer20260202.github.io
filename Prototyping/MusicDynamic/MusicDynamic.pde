@@ -51,40 +51,51 @@ void draw() {
 }
 
 void keyPressed() {
-  if (key == 'p' || key == 'P') {
-    if (playlist[currentSong] != null) {
-      playlist[currentSong].loop(0); // play once (loop 0 times)
+  if (key == 'P' || key == 'p') playlist[currentSong].loop(0);
+
+  if (key == 'O' || key == 'o') {
+    if (playlist[currentSong].isPlaying()) {
+      playlist[currentSong].pause();
+    } else {
+      playlist[currentSong].play();
     }
   }
 
-  if (key == 'o' || key == 'O') {
-    if (playlist[currentSong] != null) {
-      if (playlist[currentSong].isPlaying()) {
-        playlist[currentSong].pause();
-      } else {
-        playlist[currentSong].play();
-      }
+  if (key == 'S' || key == 's') {
+    if (playlist[currentSong].isPlaying()) {
+      playlist[currentSong].pause();
+    } else {
+      playlist[currentSong].rewind();
     }
   }
+
+  if (key == 'L' || key == 'l') playlist[currentSong].loop(1);
+  if (key == 'K' || key == 'k') playlist[currentSong].loop();
+  if (key == 'F' || key == 'f') playlist[currentSong].skip(10000);
+  if (key == 'R' || key == 'r') playlist[currentSong].skip(-10000);
+
+  if (key == 'W' || key == 'w') {
+    if (playlist[currentSong].isMuted()) {
+      playlist[currentSong].unmute();
+    } else {
+      playlist[currentSong].mute();
+    }
+  }
+
+  if (key == CODED || keyCode == ESC) exit();
+  if (key == 'Q' || key == 'q') exit();
+
+  if (key == 'N' || key == 'n') {
+    if (playlist[currentSong].isPlaying()) {
+      playlist[currentSong].pause();
+      playlist[currentSong].rewind();
+      currentSong = (currentSong == numberOfSongs - 1) ? 0 : currentSong + 1;
+      playlist[currentSong].play();
+    } else {
+      playlist[currentSong].rewind();
+      currentSong = (currentSong == numberOfSongs - 1) ? 0 : currentSong + 1;
+    }
+  }
+
+  if (key == 'Y' || key == 'y') currentSong = int(random(numberOfSongs));
 }
-
-
- /* Key Board Short Cuts ... learning what the Music Buttons could be
-   Note: CAP Lock with ||
-   if ( key==? || key==? ) ; //'' only
-   -
-   if ( key==CODED || keyCode==SpecialKey ) ; //Special Keys abriviated CAPS
-   -
-   All Music Player Features are built out of these Minim AudioPlayer() functions
-   .isPlaying()
-   .isMuted()
-   .loop(0), parameter is number of iterations after play
-   .loop(), parameter is infinite interations
-   .play(), parameter is built-in skip (milli-seconds or crystal-time)
-   .pause()
-   .rewind()
-   .skip()
-   .unmute()
-   .mute()
-   
- */
