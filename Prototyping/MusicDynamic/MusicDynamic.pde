@@ -9,6 +9,7 @@ Minim minim;
 AudioPlayer[] playlist;
 AudioPlayer[] soundEffects;
 int currentSong = 0;
+String currentSongTitle = "Unknown";
 
 String upArrow = "../../";
 String dependencies = upArrow + "Dependencies/";
@@ -27,9 +28,6 @@ void setup() {
   
   fullScreen();
   
-  // Div
-  // Left side
-  
   // Home Button
   float HomeButtonXPos = AppWidth * 10/GUIWidth;
   float HomeButtonYPos = AppHeight * 10/GUIHeight;
@@ -38,8 +36,6 @@ void setup() {
   float HomeButtonYSize = AppHeight * 35/GUIHeight;
   
   rect(HomeButtonXPos, HomeButtonYPos, HomeButtonXSize, HomeButtonYSize, 3);
-  
-  // Middle
   
   // Current song Text
   float CurrentSongTextXPos = AppWidth * 325/GUIWidth;
@@ -59,8 +55,6 @@ void setup() {
   
   rect(NowPlayingTextXPos, NowPlayingTextYPos, NowPlayingTextXSize, NowPlayingTextYSize, 3);
   
-  // Right Side
-  
   // Lyrics Title
   float LyricsTitleXPos = AppWidth * 1620/GUIWidth;
   float LyricsTitleYPos = AppHeight * 10/GUIHeight;
@@ -75,30 +69,19 @@ void setup() {
   soundEffects = new AudioPlayer[numberOfSFX];
 
   String[] SongName = new String[numberOfSongs];
+  SongName[0] = MusicFolder + "Aerie.mp3";
+  // Add more songs here:
+  // SongName[1] = MusicFolder + "SongName.mp3";
 
-  for (int i = 0; i < numberOfSongs; i++) {
-    if (i == 0) {
-      SongName[i] = MusicFolder + "Aerie.mp3";
-    }
-  }
-  
   String[] SFXName = new String[numberOfSFX];
-  
-  for (int i = 0; i < numberOfSFX; i++) {
-    if (i == 0) {
-      SFXName[i] = SFXFolder + "MouseClick.mp3";
-    }
-  }
-  
-  String SFX1 = SFXFolder + "MouseClick.mp3";
-  soundEffects[0] = minim.loadFile(SFX1);
-  
+  SFXName[0] = SFXFolder + "MouseClick.mp3";
+
   for (int i = 0; i < numberOfSFX; i++) {
     soundEffects[i] = minim.loadFile(SFXName[i]);
     if (soundEffects[i] == null) {
-      println("Error loading song: " + SFXName[i]);
+      println("Error loading SFX: " + SFXName[i]);
     } else {
-      println("Song loaded OK: " + SFXName[i]);
+      println("SFX loaded OK: " + SFXName[i]);
     }
   }
 
@@ -107,59 +90,56 @@ void setup() {
     if (playlist[i] == null) {
       println("Error loading song: " + SongName[i]);
     } else {
-      println("Song loaded OK: " + SongName[i]);
+      AudioMetaData meta = playlist[i].getMetaData();
+      if (i == currentSong) {
+        currentSongTitle = (meta.title() != null && !meta.title().equals("")) ? meta.title() : SongName[i];
+      }
+      println("Song loaded OK: " + SongName[i] + " | Title: " + currentSongTitle);
     }
   }
-  
-  String x = "X";
-  
+
   // Strings
-  String Title = "Aerie";
   String HomeButton = "Home";
 
   // Fonts
   PFont Font;
   String LeelawadeeUIBold = "Leelawadee UI Bold";
 
-  float FontSizes[] = new float[3];
+  float[] FontSizes = new float[3];
 
-  String[] labels = { Title, HomeButton };
+  String[] labels = { currentSongTitle, HomeButton };
 
-  float[]  targetWidths = { CurrentSongTextXSize, HomeButtonXSize };
-  float[]  targetHeights = { CurrentSongTextYSize, HomeButtonYSize };
-
-  float[]  targetX = { CurrentSongTextXPos, HomeButtonXPos };
-  float[]  targetY = { CurrentSongTextYPos, HomeButtonYPos };
+  float[] targetWidths  = { CurrentSongTextXSize, HomeButtonXSize };
+  float[] targetHeights = { CurrentSongTextYSize, HomeButtonYSize };
+  float[] targetX       = { CurrentSongTextXPos,  HomeButtonXPos  };
+  float[] targetY       = { CurrentSongTextYPos,  HomeButtonYPos  };
 
   for (int i = 0; i < labels.length; i++) {
     float targetHeight = targetHeights[i];
-    float targetWidth = targetWidths[i]; 
+    float targetWidth  = targetWidths[i];
     String textToMeasure = labels[i];
 
     float baseSize = 100.0;
     textSize(baseSize);
     float currentWidth = textWidth(textToMeasure);
 
-    float sizeToFitWidth = baseSize * (targetWidth / currentWidth);
+    float sizeToFitWidth  = baseSize * (targetWidth / currentWidth);
     float sizeToFitHeight = targetHeight * 0.85;
-  
-    if (sizeToFitWidth < sizeToFitHeight) {
-      FontSizes[i] = int(sizeToFitWidth);
-    } else {
-      FontSizes[i] = int(sizeToFitHeight);
-    }
+
+    FontSizes[i] = int(min(sizeToFitWidth, sizeToFitHeight));
   }
 
   Font = createFont(LeelawadeeUIBold, 32);
 
-  // Drawing Text
   color White = #FFFFFFFF;
   color Black = #030000;
+  color DarkPurple = #301950;
   color ResetInk = White;
+
 
   fill(Black);
   textAlign(CENTER, CENTER);
-  
+
   for (int i = 0; i < labels.length; i++) {
     textFont(Font, FontSizes[i]);
     text(labels[i], targetX[i], targetY[i], targetWidths[i], targetHeights[i]);
@@ -168,6 +148,11 @@ void setup() {
 
 void draw() {
   soundEffects[0].play();
+}
+
+void updateSongTitle() {
+  AudioMetaData meta = playlist[currentSong].getMetaData();
+  currentSongTitle = (meta.title() != null && !meta.title().equals("")) ? meta.title() : "Track " + (currentSong + 1);
 }
 
 void keyPressed() {
@@ -210,12 +195,17 @@ void keyPressed() {
       playlist[currentSong].pause();
       playlist[currentSong].rewind();
       currentSong = (currentSong == numberOfSongs - 1) ? 0 : currentSong + 1;
+      updateSongTitle();
       playlist[currentSong].play();
     } else {
       playlist[currentSong].rewind();
       currentSong = (currentSong == numberOfSongs - 1) ? 0 : currentSong + 1;
+      updateSongTitle();
     }
   }
 
-  if (key == 'Y' || key == 'y') currentSong = int(random(numberOfSongs));
+  if (key == 'Y' || key == 'y') {
+    currentSong = int(random(numberOfSongs));
+    updateSongTitle();
+  }
 }
