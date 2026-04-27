@@ -27,7 +27,6 @@ void setup() {
 
   String[] SongName = new String[numberOfSongs];
 
-  // Fixed: < instead of <=
   for (int i = 0; i < numberOfSongs; i++) {
     if (i == 0) {
       SongName[i] = MusicFolder + "Aerie.mp3";
@@ -39,7 +38,7 @@ void setup() {
   playlist[currentSong] = minim.loadFile(SongName[currentSong]);
   soundEffects[0] = minim.loadFile(SFX1);
 
-  if (playlist[0] == null) {
+  if (playlist[currentSong] == null) {
     println("Error loading song: " + SongName[currentSong]);
   } else {
     println("Song loaded OK: " + SongName[currentSong]);
@@ -48,6 +47,7 @@ void setup() {
 
 void draw() {
   background(0);
+  soundEffects[0].play();
 }
 
 void keyPressed() {
