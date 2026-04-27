@@ -68,13 +68,21 @@ void setup() {
   playlist = new AudioPlayer[numberOfSongs];
   soundEffects = new AudioPlayer[numberOfSFX];
 
-  String[] SongName = new String[numberOfSongs];
-  SongName[0] = MusicFolder + "Aerie.mp3";
-  // Add more songs here:
-  // SongName[1] = MusicFolder + "SongName.mp3";
+   String[] SongName = new String[numberOfSongs];
 
+  for (int i = 0; i < numberOfSongs; i++) {
+    if (i == 0) {
+      SongName[i] = MusicFolder + "Aerie.mp3";
+    }
+  }
+  
   String[] SFXName = new String[numberOfSFX];
-  SFXName[0] = SFXFolder + "MouseClick.mp3";
+  
+  for (int i = 0; i < numberOfSFX; i++) {
+    if (i == 0) {
+      SFXName[i] = SFXFolder + "MouseClick.mp3";
+    }
+  }
 
   for (int i = 0; i < numberOfSFX; i++) {
     soundEffects[i] = minim.loadFile(SFXName[i]);
