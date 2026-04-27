@@ -70,8 +70,51 @@ void setup() {
   
   rect(LyricsTitleXPos, LyricsTitleYPos, LyricsTitleXSize, LyricsTitleYSize, 3);
   
+  minim = new Minim(this);
+  playlist = new AudioPlayer[numberOfSongs];
+  soundEffects = new AudioPlayer[numberOfSFX];
+
+  String[] SongName = new String[numberOfSongs];
+
+  for (int i = 0; i < numberOfSongs; i++) {
+    if (i == 0) {
+      SongName[i] = MusicFolder + "Aerie.mp3";
+    }
+  }
+  
+  String[] SFXName = new String[numberOfSFX];
+  
+  for (int i = 0; i < numberOfSFX; i++) {
+    if (i == 0) {
+      SFXName[i] = SFXFolder + "MouseClick.mp3";
+    }
+  }
+  
+  String SFX1 = SFXFolder + "MouseClick.mp3";
+  soundEffects[0] = minim.loadFile(SFX1);
+  
+  for (int i = 0; i < numberOfSFX; i++) {
+    soundEffects[i] = minim.loadFile(SFXName[i]);
+    if (soundEffects[i] == null) {
+      println("Error loading song: " + SFXName[i]);
+    } else {
+      println("Song loaded OK: " + SFXName[i]);
+    }
+  }
+
+  for (int i = 0; i < numberOfSongs; i++) {
+    playlist[i] = minim.loadFile(SongName[i]);
+    if (playlist[i] == null) {
+      println("Error loading song: " + SongName[i]);
+    } else {
+      println("Song loaded OK: " + SongName[i]);
+    }
+  }
+  
+  String x = "X";
+  
   // Strings
-  String Title = "Hello";
+  String Title = "Aerie";
   String HomeButton = "Home";
 
   // Fonts
@@ -116,51 +159,10 @@ void setup() {
 
   fill(Black);
   textAlign(CENTER, CENTER);
-
+  
   for (int i = 0; i < labels.length; i++) {
     textFont(Font, FontSizes[i]);
     text(labels[i], targetX[i], targetY[i], targetWidths[i], targetHeights[i]);
-  }
-  
-  minim = new Minim(this);
-  playlist = new AudioPlayer[numberOfSongs];
-  soundEffects = new AudioPlayer[numberOfSFX];
-
-  String[] SongName = new String[numberOfSongs];
-
-  for (int i = 0; i < numberOfSongs; i++) {
-    if (i == 0) {
-      SongName[i] = MusicFolder + "Aerie.mp3";
-    }
-  }
-  
-  String[] SFXName = new String[numberOfSFX];
-  
-  for (int i = 0; i < numberOfSFX; i++) {
-    if (i == 0) {
-      SFXName[i] = SFXFolder + "MouseClick.mp3";
-    }
-  }
-  
-  String SFX1 = SFXFolder + "MouseClick.mp3";
-  soundEffects[0] = minim.loadFile(SFX1);
-  
-  for (int i = 0; i < numberOfSFX; i++) {
-    soundEffects[i] = minim.loadFile(SFXName[i]);
-    if (soundEffects[i] == null) {
-      println("Error loading song: " + SFXName[i]);
-    } else {
-      println("Song loaded OK: " + SFXName[i]);
-    }
-  }
-
-  for (int i = 0; i < numberOfSongs; i++) {
-    playlist[i] = minim.loadFile(SongName[i]);
-    if (playlist[i] == null) {
-      println("Error loading song: " + SongName[i]);
-    } else {
-      println("Song loaded OK: " + SongName[i]);
-    }
   }
 }
 
