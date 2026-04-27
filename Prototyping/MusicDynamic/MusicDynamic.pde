@@ -1,4 +1,3 @@
-// Library
 import ddf.minim.*;
 import ddf.minim.analysis.*;
 import ddf.minim.effects.*;
@@ -6,7 +5,6 @@ import ddf.minim.signals.*;
 import ddf.minim.spi.*;
 import ddf.minim.ugens.*;
 
-// Variables (declarations are fine at the top)
 Minim minim;
 AudioPlayer[] playlist;
 AudioPlayer[] soundEffects;
@@ -18,50 +16,56 @@ String MusicFolder = dependencies + "Music/";
 String SFXFolder = dependencies + "SoundFX/";
 
 int numberOfSongs = 1;
-
 int numberOfSFX = 1;
 
 void setup() {
   size(700, 700);
-  
+
+  minim = new Minim(this);
   playlist = new AudioPlayer[numberOfSongs];
   soundEffects = new AudioPlayer[numberOfSFX];
-  
-  minim = new Minim(this);
 
-  String SongName[] = new String[numberOfSongs];
-  
-  for (int i = 0; i <= numberOfSongs; i++) {
+  String[] SongName = new String[numberOfSongs];
+
+  // Fixed: < instead of <=
+  for (int i = 0; i < numberOfSongs; i++) {
     if (i == 0) {
       SongName[i] = MusicFolder + "Aerie.mp3";
-    };
-  };
- 
+    }
+  }
+
   String SFX1 = SFXFolder + "MouseClick.mp3";
 
   playlist[currentSong] = minim.loadFile(SongName[currentSong]);
-  soundEffects[currentSong] = minim.loadFile(SFX1);
+  soundEffects[0] = minim.loadFile(SFX1);
 
-  if (playlist[currentSong] != null) {
-    // playlist[currentSong].play();
-  } else {
+  if (playlist[0] == null) {
     println("Error loading song: " + SongName[currentSong]);
-    printArray(SongName);
+  } else {
+    println("Song loaded OK: " + SongName[currentSong]);
   }
-  
-  if (key=='p' || key=='P') playlist[currentSong].loop(0);
-  
-  if (key=='O' || key=='o') {
-    if (playlist[currentSong].isPlaying()) {
-      playlist[currentSong].pause();
-    } else {
-      playlist[currentSong].play();
-    };
-  };
 }
 
 void draw() {
   background(0);
+}
+
+void keyPressed() {
+  if (key == 'p' || key == 'P') {
+    if (playlist[currentSong] != null) {
+      playlist[currentSong].loop(0); // play once (loop 0 times)
+    }
+  }
+
+  if (key == 'o' || key == 'O') {
+    if (playlist[currentSong] != null) {
+      if (playlist[currentSong].isPlaying()) {
+        playlist[currentSong].pause();
+      } else {
+        playlist[currentSong].play();
+      }
+    }
+  }
 }
 
 
