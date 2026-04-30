@@ -19,6 +19,18 @@ String SFXFolder = dependencies + "SoundFX/";
 int numberOfSongs = 1;
 int numberOfSFX = 1;
 
+float CurrentSongTextXPos, CurrentSongTextYPos, CurrentSongTextXSize, CurrentSongTextYSize;
+
+String[] labels;
+float[] targetWidths;
+float[] targetHeights;
+float[] targetX;
+float[] targetY;
+float[] FontSizes;
+PFont Font;
+
+color Black, ResetInk;
+
 void setup() {
   float AppWidth = displayWidth;
   float AppHeight = displayHeight;
@@ -38,11 +50,11 @@ void setup() {
   rect(HomeButtonXPos, HomeButtonYPos, HomeButtonXSize, HomeButtonYSize, 3);
   
   // Current song Text
-  float CurrentSongTextXPos = AppWidth * 325/GUIWidth;
-  float CurrentSongTextYPos = AppHeight * 55/GUIHeight;
+  CurrentSongTextXPos = AppWidth * 325/GUIWidth;
+  CurrentSongTextYPos = AppHeight * 55/GUIHeight;
   
-  float CurrentSongTextXSize = AppWidth * 200/GUIWidth;
-  float CurrentSongTextYSize = AppHeight * 35/GUIHeight;
+  CurrentSongTextXSize = AppWidth * 200/GUIWidth;
+  CurrentSongTextYSize = AppHeight * 35/GUIHeight;
   
   rect(CurrentSongTextXPos, CurrentSongTextYPos, CurrentSongTextXSize, CurrentSongTextYSize, 3);
   
@@ -68,7 +80,7 @@ void setup() {
   playlist = new AudioPlayer[numberOfSongs];
   soundEffects = new AudioPlayer[numberOfSFX];
 
-   String[] SongName = new String[numberOfSongs];
+  String[] SongName = new String[numberOfSongs];
 
   for (int i = 0; i < numberOfSongs; i++) {
     if (i == 0) {
@@ -110,17 +122,16 @@ void setup() {
   String HomeButton = "Home";
 
   // Fonts
-  PFont Font;
   String LeelawadeeUIBold = "Leelawadee UI Bold";
 
-  float[] FontSizes = new float[3];
+  FontSizes = new float[2];
 
-  String[] labels = { currentSongTitle, HomeButton };
+  labels = new String[]{ currentSongTitle, HomeButton };
 
-  float[] targetWidths  = { CurrentSongTextXSize, HomeButtonXSize };
-  float[] targetHeights = { CurrentSongTextYSize, HomeButtonYSize };
-  float[] targetX       = { CurrentSongTextXPos,  HomeButtonXPos  };
-  float[] targetY       = { CurrentSongTextYPos,  HomeButtonYPos  };
+  targetWidths  = new float[]{ CurrentSongTextXSize, HomeButtonXSize };
+  targetHeights = new float[]{ CurrentSongTextYSize, HomeButtonYSize };
+  targetX       = new float[]{ CurrentSongTextXPos,  HomeButtonXPos  };
+  targetY       = new float[]{ CurrentSongTextYPos,  HomeButtonYPos  };
 
   for (int i = 0; i < labels.length; i++) {
     float targetHeight = targetHeights[i];
@@ -140,9 +151,9 @@ void setup() {
   Font = createFont(LeelawadeeUIBold, 32);
 
   color White = #FFFFFFFF;
-  color Black = #030000;
+  Black = #030000;
   color DarkPurple = #301950;
-  color ResetInk = White;
+  ResetInk = White;
 
 
   fill(Black);
@@ -152,9 +163,24 @@ void setup() {
     textFont(Font, FontSizes[i]);
     text(labels[i], targetX[i], targetY[i], targetWidths[i], targetHeights[i]);
   }
+  
+  fill(ResetInk);
 }
 
 void draw() {
+  rect(CurrentSongTextXPos, CurrentSongTextYPos, CurrentSongTextXSize, CurrentSongTextYSize, 3);
+  
+  fill(Black);
+  for (int i = 0; i < labels.length; i++) {
+    textFont(Font, FontSizes[i]);
+    text(labels[i], targetX[i], targetY[i], targetWidths[i], targetHeights[i]);
+  }
+  
+  fill(ResetInk);
+}
+
+void mousePressed() {
+  soundEffects[0].rewind();
   soundEffects[0].play();
 }
 
