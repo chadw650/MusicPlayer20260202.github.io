@@ -171,6 +171,22 @@ void draw() {
   rect(CurrentSongTextXPos, CurrentSongTextYPos, CurrentSongTextXSize, CurrentSongTextYSize, 3);
   
   fill(Black);
+  
+  for (int i = 0; i < labels.length; i++) {
+    float targetHeight = targetHeights[i];
+    float targetWidth  = targetWidths[i];
+    String textToMeasure = labels[i];
+
+    float baseSize = 100.0;
+    textSize(baseSize);
+    float currentWidth = textWidth(textToMeasure);
+
+    float sizeToFitWidth  = baseSize * (targetWidth / currentWidth);
+    float sizeToFitHeight = targetHeight * 0.85;
+
+    FontSizes[i] = int(min(sizeToFitWidth, sizeToFitHeight));
+  }
+  
   for (int i = 0; i < labels.length; i++) {
     textFont(Font, FontSizes[i]);
     text(labels[i], targetX[i], targetY[i], targetWidths[i], targetHeights[i]);
