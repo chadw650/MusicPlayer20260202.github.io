@@ -120,18 +120,20 @@ void setup() {
 
   // Strings
   String HomeButton = "Home";
+  String LyricsTitle = "Lyrics";
+  String NowPlayingString = "Now Playing";
 
   // Fonts
   String LeelawadeeUIBold = "Leelawadee UI Bold";
 
-  FontSizes = new float[2];
-
-  labels = new String[]{ currentSongTitle, HomeButton };
-
-  targetWidths  = new float[]{ CurrentSongTextXSize, HomeButtonXSize };
-  targetHeights = new float[]{ CurrentSongTextYSize, HomeButtonYSize };
-  targetX       = new float[]{ CurrentSongTextXPos,  HomeButtonXPos  };
-  targetY       = new float[]{ CurrentSongTextYPos,  HomeButtonYPos  };
+  labels = new String[]{ currentSongTitle, HomeButton, LyricsTitle, NowPlayingString };
+  
+  FontSizes = new float[labels.length];
+  
+  targetWidths  = new float[]{ CurrentSongTextXSize, HomeButtonXSize, LyricsTitleXSize, NowPlayingTextXSize };
+  targetHeights = new float[]{ CurrentSongTextYSize, HomeButtonYSize, LyricsTitleYSize, NowPlayingTextYSize };
+  targetX       = new float[]{ CurrentSongTextXPos,  HomeButtonXPos, LyricsTitleXPos, NowPlayingTextXPos  };
+  targetY       = new float[]{ CurrentSongTextYPos,  HomeButtonYPos, LyricsTitleYPos, NowPlayingTextYPos  };
 
   for (int i = 0; i < labels.length; i++) {
     float targetHeight = targetHeights[i];
