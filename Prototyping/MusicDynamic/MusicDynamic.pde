@@ -16,7 +16,7 @@ String dependencies = upArrow + "Dependencies/";
 String MusicFolder = dependencies + "Music/";
 String SFXFolder = dependencies + "SoundFX/";
 
-int numberOfSongs = 1;
+int numberOfSongs = 2;
 int numberOfSFX = 1;
 
 float CurrentSongTextXPos, CurrentSongTextYPos, CurrentSongTextXSize, CurrentSongTextYSize;
@@ -85,6 +85,10 @@ void setup() {
   for (int i = 0; i < numberOfSongs; i++) {
     if (i == 0) {
       SongName[i] = MusicFolder + "Aerie.mp3";
+    }
+    
+    if (i == 1) {
+      SongName[i] = MusicFolder + "NeverGonnaGiveYouUp.mp3";
     }
   }
   
@@ -170,6 +174,8 @@ void setup() {
 }
 
 void draw() {
+  soundEffects[0].play();
+  
   rect(CurrentSongTextXPos, CurrentSongTextYPos, CurrentSongTextXSize, CurrentSongTextYSize, 3);
   
   fill(Black);
@@ -205,6 +211,7 @@ void mousePressed() {
 void updateSongTitle() {
   AudioMetaData meta = playlist[currentSong].getMetaData();
   currentSongTitle = (meta.title() != null && !meta.title().equals("")) ? meta.title() : "Track " + (currentSong + 1);
+  labels[0] = currentSongTitle;
 }
 
 void keyPressed() {
