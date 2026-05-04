@@ -38,7 +38,7 @@ AudioPlayer[] soundEffects;
 int currentSong = 0;
 String currentSongTitle = "Unknown";
 
-String upArrow = "../../";
+String upArrow = "../";
 String dependencies = upArrow + "Dependencies/";
 String MusicFolder = dependencies + "Music/";
 String SFXFolder = dependencies + "SoundFX/";
