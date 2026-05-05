@@ -381,17 +381,17 @@ void draw() {
     rect(ButtonXPos, ButtonYPos, ButtonWidth, ButtonHeight, 3);
 
     // Placing Button Images
-    if (i == 1) image(FastForwardButtonImg,   ButtonXPos, ButtonYPos, ButtonWidth, ButtonHeight);
-    if (i == 2) image(FasterForwardButtonImg, ButtonXPos, ButtonYPos, ButtonWidth, ButtonHeight);
-    if (i == 3) image(LoopButtonImg,          ButtonXPos, ButtonYPos, ButtonWidth, ButtonHeight);
-    if (i == 4) image(PreviousButtonImg,      ButtonXPos, ButtonYPos, ButtonWidth, ButtonHeight);
-    if (i == 5) image(PauseButtonImg,         ButtonXPos, ButtonYPos, ButtonWidth, ButtonHeight);
-    if (i == 6) image(PlayButtonImg,          ButtonXPos, ButtonYPos, ButtonWidth, ButtonHeight);
-    if (i == 7) image(StopButtonImg,          ButtonXPos, ButtonYPos, ButtonWidth, ButtonHeight);
-    if (i == 8) image(SkipButtonImg,          ButtonXPos, ButtonYPos, ButtonWidth, ButtonHeight);
-    if (i == 9) image(MuteButtonImg,          ButtonXPos, ButtonYPos, ButtonWidth, ButtonHeight);
-    if (i == 10) image(VolumeDownImg,         ButtonXPos, ButtonYPos, ButtonWidth, ButtonHeight);
-    if (i == 11) image(VolumeUpImg,           ButtonXPos, ButtonYPos, ButtonWidth, ButtonHeight);
+    if (i ==  1) image(FastForwardButtonImg,   ButtonXPos, ButtonYPos, ButtonWidth, ButtonHeight);
+    if (i ==  2) image(FasterForwardButtonImg, ButtonXPos, ButtonYPos, ButtonWidth, ButtonHeight);
+    if (i ==  3) image(LoopButtonImg,          ButtonXPos, ButtonYPos, ButtonWidth, ButtonHeight);
+    if (i ==  4) image(PreviousButtonImg,      ButtonXPos, ButtonYPos, ButtonWidth, ButtonHeight);
+    if (i ==  5) image(PauseButtonImg,         ButtonXPos, ButtonYPos, ButtonWidth, ButtonHeight);
+    if (i ==  6) image(PlayButtonImg,          ButtonXPos, ButtonYPos, ButtonWidth, ButtonHeight);
+    if (i ==  7) image(StopButtonImg,          ButtonXPos, ButtonYPos, ButtonWidth, ButtonHeight);
+    if (i ==  8) image(SkipButtonImg,          ButtonXPos, ButtonYPos, ButtonWidth, ButtonHeight);
+    if (i ==  9) image(MuteButtonImg,          ButtonXPos, ButtonYPos, ButtonWidth, ButtonHeight);
+    if (i == 10) image(VolumeDownImg,          ButtonXPos, ButtonYPos, ButtonWidth, ButtonHeight);
+    if (i == 11) image(VolumeUpImg,            ButtonXPos, ButtonYPos, ButtonWidth, ButtonHeight);
   }
 
   if (HoveringOverButton == true) {
@@ -492,3 +492,6 @@ void keyPressed() {
     updateSongTitle();
   }
 }
+
+
+// End Main Program
