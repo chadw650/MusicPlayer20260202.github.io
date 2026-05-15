@@ -58,6 +58,20 @@ PFont Font;
 
 color Black, ResetInk;
 
+// Image Variables
+String ImagesFolder = "Images";
+String FileExtension = ".png";
+String open = "/";
+String[] ImageName = {
+  "Roblox",
+  "Bike",
+};
+String ImageDirectory;
+String[] Pathway;
+PImage[] Images;
+String FallbackPathway;
+float Random;
+
 void setup() {
   fullScreen();
 
@@ -76,6 +90,21 @@ void setup() {
   MuteButtonImg = loadImage("MuteSong.png");
   VolumeDownImg = loadImage("LowerVolume.png");
   VolumeUpImg = loadImage("VolumeUp.png");
+
+  // Load Album Art Images
+  ImageDirectory = upArrow + open + upArrow + open + "Dependencies" + open + ImagesFolder + open;
+  Pathway = new String[ImageName.length];
+  Images = new PImage[ImageName.length];
+  FallbackPathway = ImageDirectory + "Bike" + FileExtension;
+  for (int i = 0; i < ImageName.length; i++) {
+    Pathway[i] = sketchPath(ImageDirectory + ImageName[i] + FileExtension);
+    Images[i] = loadImage(Pathway[i]);
+
+    if (Images[i] == null) {
+      Images[i] = loadImage(FallbackPathway);
+    }
+  }
+  Random = int(random(0, ImageName.length));
 
   // Home Button
   float HomeButtonXPos = AppWidth * 10/GUIWidth;
@@ -258,6 +287,31 @@ void draw() {
   float CurrentSongYSize = AppHeight * 600/GUIHeight;
 
   rect(CurrentSongXPos, CurrentSongYPos, CurrentSongXSize, CurrentSongYSize, 3);
+
+  // Album Art Images
+  for (int i = 0; i < ImageName.length; i++) {
+    float Width = CurrentSongXSize;
+    float Height = CurrentSongYSize;
+
+    float OriginalW = Images[i].width;
+    float OriginalH = Images[i].height;
+
+    float scale = min(Width / OriginalW, Height / OriginalH);
+
+    println(scale);
+
+    float NewWidth = OriginalW * scale;
+    float NewHeight = OriginalH * scale;
+
+    float XOffset = CurrentSongXPos + (CurrentSongXSize - NewWidth) / 2;
+    float YOffset = CurrentSongYPos + (CurrentSongYSize - NewHeight) / 2;
+
+    if (Random == i) {
+      if (Images[i] != null) {
+        image(Images[i], XOffset, YOffset, NewWidth, NewHeight);
+      }
+    }
+  }
 
   // Current song Text
   rect(CurrentSongTextXPos, CurrentSongTextYPos, CurrentSongTextXSize, CurrentSongTextYSize, 3);
