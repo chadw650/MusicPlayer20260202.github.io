@@ -91,10 +91,11 @@ void setup() {
   VolumeUpImg = loadImage("VolumeUp.png");
 
   // Load Album Art Images
-  ImageDirectory = upArrow + open + upArrow + open + "Dependencies" + open + ImagesFolder + open;
+  ImageDirectory = upArrow + open + "Dependencies" + open + ImagesFolder + open;
   Pathway = new String[ImageName.length];
   Images = new PImage[ImageName.length];
   FallbackPathway = ImageDirectory + "Bike" + FileExtension;
+  
   for (int i = 0; i < ImageName.length; i++) {
     Pathway[i] = sketchPath(ImageDirectory + ImageName[i] + FileExtension);
     Images[i] = loadImage(Pathway[i]);
