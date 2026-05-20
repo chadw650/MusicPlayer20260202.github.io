@@ -70,7 +70,6 @@ String ImageDirectory;
 String[] Pathway;
 PImage[] Images;
 String FallbackPathway;
-float Random;
 
 void setup() {
   fullScreen();
@@ -104,7 +103,6 @@ void setup() {
       Images[i] = loadImage(FallbackPathway);
     }
   }
-  Random = int(random(0, ImageName.length));
 
   // Home Button
   float HomeButtonXPos = AppWidth * 10/GUIWidth;
@@ -298,18 +296,14 @@ void draw() {
 
     float scale = min(Width / OriginalW, Height / OriginalH);
 
-    println(scale);
-
     float NewWidth = OriginalW * scale;
     float NewHeight = OriginalH * scale;
 
     float XOffset = CurrentSongXPos + (CurrentSongXSize - NewWidth) / 2;
     float YOffset = CurrentSongYPos + (CurrentSongYSize - NewHeight) / 2;
-
-    if (Random == i) {
-      if (Images[i] != null) {
-        image(Images[i], XOffset, YOffset, NewWidth, NewHeight);
-      }
+    
+    if (currentSong == i) {
+      image(Images[i], XOffset, YOffset, NewWidth, NewHeight);
     }
   }
 
