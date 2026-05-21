@@ -71,6 +71,8 @@ String[] Pathway;
 PImage[] Images;
 String FallbackPathway;
 
+boolean PlayButton;
+
 void setup() {
   fullScreen();
 
@@ -230,13 +232,14 @@ void setup() {
 }
 
 void draw() {
-  background(255);
+  background(200);
 
   fill(255);
   stroke(0);
   strokeWeight(1);
 
   boolean HoveringOverButton = false;
+  PlayButton = false;
 
   // Left side
 
@@ -423,6 +426,9 @@ void draw() {
     if (mouseX >= ButtonXPos && mouseX <= ButtonXPos + ButtonWidth && mouseY >= ButtonYPos && mouseY <= ButtonYPos + ButtonHeight) {
       fill(150);
       HoveringOverButton = true;
+      
+      if (i == 6) PlayButton = true;
+      
     } else {
       fill(255);
     }
@@ -479,6 +485,10 @@ void draw() {
 void mousePressed() {
   soundEffects[0].rewind();
   soundEffects[0].play();
+  
+  if (PlayButton == true) {
+  
+  }
 }
 
 void updateSongTitle() {
