@@ -1,6 +1,4 @@
-/* 
-
-Music Player, Final
+/* Music Player, Final
 
 */
 
@@ -426,9 +424,6 @@ void draw() {
     if (mouseX >= ButtonXPos && mouseX <= ButtonXPos + ButtonWidth && mouseY >= ButtonYPos && mouseY <= ButtonYPos + ButtonHeight) {
       fill(150);
       HoveringOverButton = true;
-      
-      if (i == 6) PlayButton = true;
-      
     } else {
       fill(255);
     }
@@ -443,7 +438,7 @@ void draw() {
     if (i ==  5) image(PauseButtonImg,         ButtonXPos, ButtonYPos, ButtonWidth, ButtonHeight);
     if (i ==  6) image(PlayButtonImg,          ButtonXPos, ButtonYPos, ButtonWidth, ButtonHeight);
     if (i ==  7) image(StopButtonImg,          ButtonXPos, ButtonYPos, ButtonWidth, ButtonHeight);
-    if (i ==  8) image(SkipButtonImg,          ButtonXPos, ButtonYPos, ButtonWidth, ButtonHeight);
+    if (i ==  8) image(SkipButtonImg,            ButtonXPos, ButtonYPos, ButtonWidth, ButtonHeight);
     if (i ==  9) image(MuteButtonImg,          ButtonXPos, ButtonYPos, ButtonWidth, ButtonHeight);
     if (i == 10) image(VolumeDownImg,          ButtonXPos, ButtonYPos, ButtonWidth, ButtonHeight);
     if (i == 11) image(VolumeUpImg,            ButtonXPos, ButtonYPos, ButtonWidth, ButtonHeight);
@@ -485,8 +480,87 @@ void draw() {
 void mousePressed() {
   soundEffects[0].rewind();
   soundEffects[0].play();
-  
-  if (PlayButton == true) playlist[currentSong].loop(0);
+
+  for (int i = 1; i <= 11; i++) {
+    float ButtonWidth = AppWidth * 110/GUIWidth;
+    float ButtonHeight = AppHeight * 110/GUIHeight;
+    float Padding = 10;
+    float ButtonXPos = AppWidth * (205 + (i * (ButtonWidth + Padding)))/GUIWidth;
+    float ButtonYPos = AppHeight * 955 / GUIHeight;
+
+    if (mouseX >= ButtonXPos && mouseX <= ButtonXPos + ButtonWidth && mouseY >= ButtonYPos && mouseY <= ButtonYPos + ButtonHeight) {
+      
+      if (i == 1) {
+        playlist[currentSong].skip(5000); 
+      }
+      
+      if (i == 2) {
+        playlist[currentSong].skip(15000); 
+      }
+      
+      if (i == 3) {
+        playlist[currentSong].loop(); 
+      }
+      
+      if (i == 4) {
+        if (playlist[currentSong].isPlaying()) {
+          playlist[currentSong].pause();
+          playlist[currentSong].rewind();
+          currentSong = (currentSong == 0) ? numberOfSongs - 1 : currentSong - 1;
+          updateSongTitle();
+          playlist[currentSong].play();
+        } else {
+          playlist[currentSong].rewind();
+          currentSong = (currentSong == 0) ? numberOfSongs - 1 : currentSong - 1;
+          updateSongTitle();
+        }
+      }
+      
+      if (i == 5) {
+        if (playlist[currentSong].isPlaying()) {
+          playlist[currentSong].pause();
+        }
+      }
+    
+      if (i == 6) playlist[currentSong].loop(0);
+      
+      if (i == 7) {
+        playlist[currentSong].pause();
+        playlist[currentSong].rewind();
+      }
+      
+      if (i == 8) {
+        if (playlist[currentSong].isPlaying()) {
+          playlist[currentSong].pause();
+          playlist[currentSong].rewind();
+          currentSong = (currentSong == numberOfSongs - 1) ? 0 : currentSong + 1;
+          updateSongTitle();
+          playlist[currentSong].play();
+        } else {
+          playlist[currentSong].rewind();
+          currentSong = (currentSong == numberOfSongs - 1) ? 0 : currentSong + 1;
+          updateSongTitle();
+        }
+      }
+      
+      if (i == 9) {
+        if (playlist[currentSong].isMuted()) {
+          playlist[currentSong].unmute();
+        } else {
+          playlist[currentSong].mute();
+        }
+      }
+      
+      if (i == 10) {
+        playlist[currentSong].setGain(playlist[currentSong].getGain() - 5.0);
+      }
+      
+      if (i == 11) {
+        playlist[currentSong].setGain(playlist[currentSong].getGain() + 5.0);
+      }
+      
+    }
+  }
 }
 
 void updateSongTitle() {
@@ -549,6 +623,5 @@ void keyPressed() {
     updateSongTitle();
   }
 }
-
 
 // End Main Program
