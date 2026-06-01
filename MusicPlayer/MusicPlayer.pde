@@ -486,9 +486,7 @@ void mousePressed() {
   soundEffects[0].rewind();
   soundEffects[0].play();
   
-  if (PlayButton == true) {
-  
-  }
+  if (PlayButton == true) playlist[currentSong].loop(0);
 }
 
 void updateSongTitle() {
