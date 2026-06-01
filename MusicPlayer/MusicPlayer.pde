@@ -182,7 +182,7 @@ void setup() {
   // Strings
   String HomeButton = "Home";
   String LyricsTitle = "Lyrics";
-  String NowPlayingString = "Now Playing";
+  String NowPlayingString = "Stopped"; // Initial state set to Stopped
 
   // Fonts
   String LeelawadeeUIBold = "Leelawadee UI Bold";
@@ -231,6 +231,15 @@ void setup() {
 
 void draw() {
   background(200);
+
+  // STATE CHECK: Dynamically update labels[3] based on current play status
+  if (playlist[currentSong].isPlaying()) {
+    labels[3] = "Playing";
+  } else if (playlist[currentSong].position() == 0) {
+    labels[3] = "Stopped";
+  } else {
+    labels[3] = "Paused";
+  }
 
   fill(255);
   stroke(0);
@@ -424,6 +433,7 @@ void draw() {
     if (mouseX >= ButtonXPos && mouseX <= ButtonXPos + ButtonWidth && mouseY >= ButtonYPos && mouseY <= ButtonYPos + ButtonHeight) {
       fill(150);
       HoveringOverButton = true;
+      if (i == 6) PlayButton = true; 
     } else {
       fill(255);
     }
@@ -438,7 +448,7 @@ void draw() {
     if (i ==  5) image(PauseButtonImg,         ButtonXPos, ButtonYPos, ButtonWidth, ButtonHeight);
     if (i ==  6) image(PlayButtonImg,          ButtonXPos, ButtonYPos, ButtonWidth, ButtonHeight);
     if (i ==  7) image(StopButtonImg,          ButtonXPos, ButtonYPos, ButtonWidth, ButtonHeight);
-    if (i ==  8) image(SkipButtonImg,            ButtonXPos, ButtonYPos, ButtonWidth, ButtonHeight);
+    if (i ==  8) image(SkipButtonImg,          ButtonXPos, ButtonYPos, ButtonWidth, ButtonHeight);
     if (i ==  9) image(MuteButtonImg,          ButtonXPos, ButtonYPos, ButtonWidth, ButtonHeight);
     if (i == 10) image(VolumeDownImg,          ButtonXPos, ButtonYPos, ButtonWidth, ButtonHeight);
     if (i == 11) image(VolumeUpImg,            ButtonXPos, ButtonYPos, ButtonWidth, ButtonHeight);
@@ -480,6 +490,10 @@ void draw() {
 void mousePressed() {
   soundEffects[0].rewind();
   soundEffects[0].play();
+
+  if (PlayButton == true) {
+    playlist[currentSong].loop(0);
+  }
 
   for (int i = 1; i <= 11; i++) {
     float ButtonWidth = AppWidth * 110/GUIWidth;
