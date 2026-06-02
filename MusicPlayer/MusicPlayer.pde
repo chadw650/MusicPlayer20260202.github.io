@@ -62,6 +62,14 @@ float LyricsContainerXPos, LyricsContainerYPos, LyricsContainerXSize, LyricsCont
 float LyricsXPos, LyricsYPos, LyricsXSize, LyricsYSize;
 float MPContainerXPos, MPContainerYPos, MPContainerXSize, MPContainerYSize;
 
+// Playlist Box Track Storage
+String[] allSongTitles;
+float[] playlistBoxXPos;
+float[] playlistBoxYPos;
+float[] playlistBoxWidth;
+float[] playlistBoxHeight;
+float[] playlistFontSizes;
+
 String[] labels;
 float[] targetWidths;
 float[] targetHeights;
@@ -213,7 +221,6 @@ void setup() {
   MPContainerXSize = AppWidth * 1605/GUIWidth;
   MPContainerYSize = AppHeight * 135/GUIHeight;
 
-
   minim = new Minim(this);
   playlist = new AudioPlayer[numberOfSongs];
   soundEffects = new AudioPlayer[numberOfSFX];
@@ -247,16 +254,28 @@ void setup() {
     }
   }
 
+  // Arrays to hold list calculations dynamically
+  allSongTitles = new String[numberOfSongs];
+  playlistBoxXPos = new float[numberOfSongs];
+  playlistBoxYPos = new float[numberOfSongs];
+  playlistBoxWidth = new float[numberOfSongs];
+  playlistBoxHeight = new float[numberOfSongs];
+  playlistFontSizes = new float[numberOfSongs];
+
   for (int i = 0; i < numberOfSongs; i++) {
     playlist[i] = minim.loadFile(SongName[i]);
     if (playlist[i] == null) {
       println("Error loading song: " + SongName[i]);
+      allSongTitles[i] = "Track " + (i + 1);
     } else {
       AudioMetaData meta = playlist[i].getMetaData();
+      String calculatedTitle = (meta.title() != null && !meta.title().equals("")) ? meta.title() : "Track " + (i + 1);
+      allSongTitles[i] = calculatedTitle;
+      
       if (i == currentSong) {
-        currentSongTitle = (meta.title() != null && !meta.title().equals("")) ? meta.title() : SongName[i];
+        currentSongTitle = calculatedTitle;
       }
-      println("Song loaded OK: " + SongName[i] + " | Title: " + currentSongTitle);
+      println("Song loaded OK: " + SongName[i] + " | Title: " + calculatedTitle);
     }
   }
 
@@ -290,6 +309,22 @@ void setup() {
     float sizeToFitHeight = targetHeight * 0.85;
 
     FontSizes[i] = int(min(sizeToFitWidth, sizeToFitHeight));
+  }
+
+  float listPadding = 10;
+
+  for (int i = 0; i < numberOfSongs; i++) {
+    playlistBoxXPos[i] = AppWidth * (5 + listPadding) / GUIWidth;
+    playlistBoxYPos[i] = AppHeight * (510 + listPadding + (i * 55) + listPadding) / GUIHeight;
+    playlistBoxWidth[i] = AppWidth * (300 - (listPadding * 2)) / GUIWidth;
+    playlistBoxHeight[i] = AppHeight * 50 / GUIHeight;
+
+    float baseSize = 100.0;
+    textSize(baseSize);
+    float currentWidth = textWidth(allSongTitles[i]);
+    float sizeToFitWidth = baseSize * (playlistBoxWidth[i] / currentWidth);
+    float sizeToFitHeight = playlistBoxHeight[i] * 0.70; // 70% padding bounds for clean fit inside tracks
+    playlistFontSizes[i] = int(min(sizeToFitWidth, sizeToFitHeight));
   }
 
   Font = createFont(LeelawadeeUIBold, 32);
@@ -339,9 +374,21 @@ void draw() {
   // Playlist Container
   rect(PlaylistContainerXPos, PlaylistContainerYPos, PlaylistContainerXSize, PlaylistContainerYSize, 3);
 
+  // Dynamically Render Track Boxes Inside Playlist Container Box
+  for (int i = 0; i < numberOfSongs; i++) {
+    fill(255);
+    rect(playlistBoxXPos[i], playlistBoxYPos[i], playlistBoxWidth[i], playlistBoxHeight[i], 3);
+    
+    // Draw Text Titles inside rendered track locations
+    fill(Black);
+    textAlign(CENTER, CENTER);
+    textFont(Font, playlistFontSizes[i]);
+    text(allSongTitles[i], playlistBoxXPos[i], playlistBoxYPos[i], playlistBoxWidth[i], playlistBoxHeight[i]);
+  }
 
   // Middle
   // Music Container
+  fill(255);
   rect(MusicContainerXPos, MusicContainerYPos, MusicContainerXSize, MusicContainerYSize, 3);
 
   // Current Song
