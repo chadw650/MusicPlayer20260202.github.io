@@ -44,7 +44,23 @@ String SFXFolder = dependencies + "SoundFX/";
 int numberOfSongs = 2;
 int numberOfSFX = 1;
 
+// Cached Layout Variables
+float HomeButtonXPos, HomeButtonYPos, HomeButtonXSize, HomeButtonYSize;
 float CurrentSongTextXPos, CurrentSongTextYPos, CurrentSongTextXSize, CurrentSongTextYSize;
+float NowPlayingTextXPos, NowPlayingTextYPos, NowPlayingTextXSize, NowPlayingTextYSize;
+float LyricsTitleXPos, LyricsTitleYPos, LyricsTitleXSize, LyricsTitleYSize;
+
+float MainContainerXPos, MainContainerYPos, MainContainerXSize, MainContainerYSize;
+float PlaylistContainerXPos, PlaylistContainerYPos, PlaylistContainerXSize, PlaylistContainerYSize;
+float MusicContainerXPos, MusicContainerYPos, MusicContainerXSize, MusicContainerYSize;
+float CurrentSongXPos, CurrentSongYPos, CurrentSongXSize, CurrentSongYSize;
+float NextSong1XPos, NextSong1YPos, NextSong1XSize, NextSong1YSize;
+float NextSong2XPos, NextSong2YPos, NextSong2XSize, NextSong2YSize;
+float NextSong3XPos, NextSong3YPos, NextSong3XSize, NextSong3YSize;
+float ProgressBarXPos, ProgressBarYPos, ProgressBarXSize, ProgressBarYSize;
+float LyricsContainerXPos, LyricsContainerYPos, LyricsContainerXSize, LyricsContainerYSize;
+float LyricsXPos, LyricsYPos, LyricsXSize, LyricsYSize;
+float MPContainerXPos, MPContainerYPos, MPContainerXSize, MPContainerYSize;
 
 String[] labels;
 float[] targetWidths;
@@ -105,33 +121,98 @@ void setup() {
     }
   }
 
+  // Caching Layout Geometry
+  
   // Home Button
-  float HomeButtonXPos = AppWidth * 10/GUIWidth;
-  float HomeButtonYPos = AppHeight * 10/GUIHeight;
-
-  float HomeButtonXSize = AppWidth * 290/GUIWidth;
-  float HomeButtonYSize = AppHeight * 35/GUIHeight;
+  HomeButtonXPos = AppWidth * 10/GUIWidth;
+  HomeButtonYPos = AppHeight * 10/GUIHeight;
+  HomeButtonXSize = AppWidth * 290/GUIWidth;
+  HomeButtonYSize = AppHeight * 35/GUIHeight;
 
   // Current song Text
   CurrentSongTextXPos = AppWidth * 325/GUIWidth;
   CurrentSongTextYPos = AppHeight * 55/GUIHeight;
-
   CurrentSongTextXSize = AppWidth * 200/GUIWidth;
   CurrentSongTextYSize = AppHeight * 35/GUIHeight;
 
   // NowPlayingText
-  float NowPlayingTextXPos = AppWidth * 320 / GUIWidth;
-  float NowPlayingTextYPos = AppHeight * 10 / GUIHeight;
-
-  float NowPlayingTextXSize = AppWidth * 300 / GUIWidth;
-  float NowPlayingTextYSize = AppHeight * 35 / GUIHeight;
+  NowPlayingTextXPos = AppWidth * 320 / GUIWidth;
+  NowPlayingTextYPos = AppHeight * 10 / GUIHeight;
+  NowPlayingTextXSize = AppWidth * 300 / GUIWidth;
+  NowPlayingTextYSize = AppHeight * 35 / GUIHeight;
 
   // Lyrics Title
-  float LyricsTitleXPos = AppWidth * 1620/GUIWidth;
-  float LyricsTitleYPos = AppHeight * 10/GUIHeight;
+  LyricsTitleXPos = AppWidth * 1620/GUIWidth;
+  LyricsTitleYPos = AppHeight * 10/GUIHeight;
+  LyricsTitleXSize = AppWidth * 290/GUIWidth;
+  LyricsTitleYSize = AppHeight * 35/GUIHeight;
 
-  float LyricsTitleXSize = AppWidth * 290/GUIWidth;
-  float LyricsTitleYSize = AppHeight * 35/GUIHeight;
+  // Main Container
+  MainContainerXPos = AppWidth * 5/GUIWidth;
+  MainContainerYPos = AppHeight * 5/GUIHeight;
+  MainContainerXSize = AppWidth * 300/GUIWidth;
+  MainContainerYSize = AppHeight * 500/GUIHeight;
+
+  // Playlist Container
+  PlaylistContainerXPos = AppWidth * 5/GUIWidth;
+  PlaylistContainerYPos = AppHeight * 510/GUIHeight;
+  PlaylistContainerXSize = AppWidth * 300/GUIWidth;
+  PlaylistContainerYSize = AppHeight * 565/GUIHeight;
+
+  // Music Container
+  MusicContainerXPos = AppWidth * 310/GUIWidth;
+  MusicContainerYPos = AppHeight * 5/GUIHeight;
+  MusicContainerXSize = AppWidth * 1300/GUIWidth;
+  MusicContainerYSize = AppHeight * 900/GUIHeight;
+
+  // Current Song Block
+  CurrentSongXPos = AppWidth * 320/GUIWidth;
+  CurrentSongYPos = AppHeight * 50/GUIHeight;
+  CurrentSongXSize = AppWidth * 1280/GUIWidth;
+  CurrentSongYSize = AppHeight * 600/GUIHeight;
+
+  // Next Song 1
+  NextSong1XPos = AppWidth * 320/GUIWidth;
+  NextSong1YPos = AppHeight * 650/GUIHeight;
+  NextSong1XSize = AppWidth * 1280/GUIWidth;
+  NextSong1YSize = AppHeight * 80/GUIHeight;
+
+  // Next Song 2
+  NextSong2XPos = AppWidth * 320/GUIWidth;
+  NextSong2YPos = AppHeight * 730/GUIHeight;
+  NextSong2XSize = AppWidth * 1280/GUIWidth;
+  NextSong2YSize = AppHeight * 80/GUIHeight;
+
+  // Next Song 3
+  NextSong3XPos = AppWidth * 320/GUIWidth;
+  NextSong3YPos = AppHeight * 810/GUIHeight;
+  NextSong3XSize = AppWidth * 1280/GUIWidth;
+  NextSong3YSize = AppHeight * 80/GUIHeight;
+
+  // Progress Bar
+  ProgressBarXPos = AppWidth * 310/GUIWidth;
+  ProgressBarYPos = AppHeight * 910/GUIHeight;
+  ProgressBarXSize = AppWidth * 1300/GUIWidth;
+  ProgressBarYSize = AppHeight * 25/GUIHeight;
+
+  // Lyrics Container
+  LyricsContainerXPos = AppWidth * 1615/GUIWidth;
+  LyricsContainerYPos = AppHeight * 5/GUIHeight;
+  LyricsContainerXSize = AppWidth * 300/GUIWidth;
+  LyricsContainerYSize = AppHeight * 930/GUIHeight;
+
+  // Lyrics Text Area
+  LyricsXPos = AppWidth * 1620/GUIWidth;
+  LyricsYPos = AppHeight * 50/GUIHeight;
+  LyricsXSize = AppWidth * 290/GUIWidth;
+  LyricsYSize = AppHeight * 880/GUIHeight;
+
+  // Music Player Container
+  MPContainerXPos = AppWidth * 310/GUIWidth;
+  MPContainerYPos = AppHeight * 940/GUIHeight;
+  MPContainerXSize = AppWidth * 1605/GUIWidth;
+  MPContainerYSize = AppHeight * 135/GUIHeight;
+
 
   minim = new Minim(this);
   playlist = new AudioPlayer[numberOfSongs];
@@ -249,52 +330,21 @@ void draw() {
   PlayButton = false;
 
   // Left side
-
   // Main Container
-  float MainContainerXPos = AppWidth * 5/GUIWidth;
-  float MainContainerYPos = AppHeight * 5/GUIHeight;
-
-  float MainContainerXSize = AppWidth * 300/GUIWidth;
-  float MainContainerYSize = AppHeight * 500/GUIHeight;
-
   rect(MainContainerXPos, MainContainerYPos, MainContainerXSize, MainContainerYSize, 3);
 
   // Home Button
-  float HomeButtonXPos = AppWidth * 10/GUIWidth;
-  float HomeButtonYPos = AppHeight * 10/GUIHeight;
-
-  float HomeButtonXSize = AppWidth * 290/GUIWidth;
-  float HomeButtonYSize = AppHeight * 35/GUIHeight;
-
   rect(HomeButtonXPos, HomeButtonYPos, HomeButtonXSize, HomeButtonYSize, 3);
 
   // Playlist Container
-  float PlaylistContainerXPos = AppWidth * 5/GUIWidth;
-  float PlaylistContainerYPos = AppHeight * 510/GUIHeight;
-
-  float PlaylistContainerXSize = AppWidth * 300/GUIWidth;
-  float PlaylistContainerYSize = AppHeight * 565/GUIHeight;
-
   rect(PlaylistContainerXPos, PlaylistContainerYPos, PlaylistContainerXSize, PlaylistContainerYSize, 3);
 
+
   // Middle
-
   // Music Container
-  float MusicContainerXPos = AppWidth * 310/GUIWidth;
-  float MusicContainerYPos = AppHeight * 5/GUIHeight;
-
-  float MusicContainerXSize = AppWidth * 1300/GUIWidth;
-  float MusicContainerYSize = AppHeight * 900/GUIHeight;
-
   rect(MusicContainerXPos, MusicContainerYPos, MusicContainerXSize, MusicContainerYSize, 3);
 
   // Current Song
-  float CurrentSongXPos = AppWidth * 320/GUIWidth;
-  float CurrentSongYPos = AppHeight * 50/GUIHeight;
-
-  float CurrentSongXSize = AppWidth * 1280/GUIWidth;
-  float CurrentSongYSize = AppHeight * 600/GUIHeight;
-
   rect(CurrentSongXPos, CurrentSongYPos, CurrentSongXSize, CurrentSongYSize, 3);
 
   // Album Art Images
@@ -322,88 +372,34 @@ void draw() {
   rect(CurrentSongTextXPos, CurrentSongTextYPos, CurrentSongTextXSize, CurrentSongTextYSize, 3);
 
   // NowPlayingText
-  float NowPlayingTextXPos = AppWidth * 320 / GUIWidth;
-  float NowPlayingTextYPos = AppHeight * 10 / GUIHeight;
-
-  float NowPlayingTextXSize = AppWidth * 300 / GUIWidth;
-  float NowPlayingTextYSize = AppHeight * 35 / GUIHeight;
-
   rect(NowPlayingTextXPos, NowPlayingTextYPos, NowPlayingTextXSize, NowPlayingTextYSize, 3);
 
   // Next Song 1
-  float NextSong1XPos = AppWidth * 320/GUIWidth;
-  float NextSong1YPos = AppHeight * 650/GUIHeight;
-
-  float NextSong1XSize = AppWidth * 1280/GUIWidth;
-  float NextSong1YSize = AppHeight * 80/GUIHeight;
-
   rect(NextSong1XPos, NextSong1YPos, NextSong1XSize, NextSong1YSize, 3);
 
   // Next Song 2
-  float NextSong2XPos = AppWidth * 320/GUIWidth;
-  float NextSong2YPos = AppHeight * 730/GUIHeight;
-
-  float NextSong2XSize = AppWidth * 1280/GUIWidth;
-  float NextSong2YSize = AppHeight * 80/GUIHeight;
-
   rect(NextSong2XPos, NextSong2YPos, NextSong2XSize, NextSong2YSize, 3);
 
   // Next Song 3
-  float NextSong3XPos = AppWidth * 320/GUIWidth;
-  float NextSong3YPos = AppHeight * 810/GUIHeight;
-
-  float NextSong3XSize = AppWidth * 1280/GUIWidth;
-  float NextSong3YSize = AppHeight * 80/GUIHeight;
-
   rect(NextSong3XPos, NextSong3YPos, NextSong3XSize, NextSong3YSize, 3);
 
   // Progress Bar
-  float ProgressBarXPos = AppWidth * 310/GUIWidth;
-  float ProgressBarYPos = AppHeight * 910/GUIHeight;
-
-  float ProgressBarXSize = AppWidth * 1300/GUIWidth;
-  float ProgressBarYSize = AppHeight * 25/GUIHeight;
-
   rect(ProgressBarXPos, ProgressBarYPos, ProgressBarXSize, ProgressBarYSize, 3);
 
+
   // Right Side
-
   // Lyrics Container
-  float LyricsContainerXPos = AppWidth * 1615/GUIWidth;
-  float LyricsContainerYPos = AppHeight * 5/GUIHeight;
-
-  float LyricsContainerXSize = AppWidth * 300/GUIWidth;
-  float LyricsContainerYSize = AppHeight * 930/GUIHeight;
-
   rect(LyricsContainerXPos, LyricsContainerYPos, LyricsContainerXSize, LyricsContainerYSize, 3);
 
   // Lyrics Title
-  float LyricsTitleXPos = AppWidth * 1620/GUIWidth;
-  float LyricsTitleYPos = AppHeight * 10/GUIHeight;
-
-  float LyricsTitleXSize = AppWidth * 290/GUIWidth;
-  float LyricsTitleYSize = AppHeight * 35/GUIHeight;
-
   rect(LyricsTitleXPos, LyricsTitleYPos, LyricsTitleXSize, LyricsTitleYSize, 3);
 
   // Lyrics
-  float LyricsXPos = AppWidth * 1620/GUIWidth;
-  float LyricsYPos = AppHeight * 50/GUIHeight;
-
-  float LyricsXSize = AppWidth * 290/GUIWidth;
-  float LyricsYSize = AppHeight * 880/GUIHeight;
-
   rect(LyricsXPos, LyricsYPos, LyricsXSize, LyricsYSize, 3);
 
+
   // Main Player
-
   // Music Player Container
-  float MPContainerXPos = AppWidth * 310/GUIWidth;
-  float MPContainerYPos = AppHeight * 940/GUIHeight;
-
-  float MPContainerXSize = AppWidth * 1605/GUIWidth;
-  float MPContainerYSize = AppHeight * 135/GUIHeight;
-
   rect(MPContainerXPos, MPContainerYPos, MPContainerXSize, MPContainerYSize, 3);
 
   String[] Buttons = {
