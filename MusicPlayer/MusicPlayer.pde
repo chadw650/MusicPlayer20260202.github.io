@@ -129,8 +129,6 @@ void setup() {
     }
   }
 
-  // Caching Layout Geometry
-  
   // Home Button
   HomeButtonXPos = AppWidth * 10/GUIWidth;
   HomeButtonYPos = AppHeight * 10/GUIHeight;
@@ -254,7 +252,6 @@ void setup() {
     }
   }
 
-  // Arrays to hold list calculations dynamically
   allSongTitles = new String[numberOfSongs];
   playlistBoxXPos = new float[numberOfSongs];
   playlistBoxYPos = new float[numberOfSongs];
