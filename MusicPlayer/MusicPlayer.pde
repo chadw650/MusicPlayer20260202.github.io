@@ -343,9 +343,8 @@ void setup() {
 }
 
 void draw() {
-  background(200);
+  background(100);
 
-  // STATE CHECK: Dynamically update labels[3] based on current play status
   if (playlist[currentSong].isPlaying()) {
     labels[3] = "Playing";
   } else if (playlist[currentSong].position() == 0) {
@@ -371,12 +370,10 @@ void draw() {
   // Playlist Container
   rect(PlaylistContainerXPos, PlaylistContainerYPos, PlaylistContainerXSize, PlaylistContainerYSize, 3);
 
-  // Dynamically Render Track Boxes Inside Playlist Container Box
   for (int i = 0; i < numberOfSongs; i++) {
     fill(255);
     rect(playlistBoxXPos[i], playlistBoxYPos[i], playlistBoxWidth[i], playlistBoxHeight[i], 3);
     
-    // Draw Text Titles inside rendered track locations
     fill(Black);
     textAlign(CENTER, CENTER);
     textFont(Font, playlistFontSizes[i]);
