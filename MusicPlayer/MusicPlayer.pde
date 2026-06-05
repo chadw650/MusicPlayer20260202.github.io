@@ -41,7 +41,7 @@ String dependencies = upArrow + "Dependencies/";
 String MusicFolder = dependencies + "Music/";
 String SFXFolder = dependencies + "SoundFX/";
 
-int numberOfSongs = 2;
+int numberOfSongs = 3;
 int numberOfSFX = 1;
 
 // Cached Layout Variables
@@ -87,6 +87,7 @@ String open = "/";
 String[] ImageName = {
   "Roblox",
   "Bike",
+  "hq720"
 };
 String ImageDirectory;
 String[] Pathway;
@@ -232,6 +233,10 @@ void setup() {
 
     if (i == 1) {
       SongName[i] = MusicFolder + "NeverGonnaGiveYouUp.mp3";
+    }
+    
+    if (i == 2) {
+      SongName[i] = MusicFolder + "BloodDrainAgain.mp3";
     }
   }
 
@@ -417,14 +422,32 @@ void draw() {
 
   // Next Song 1
   rect(NextSong1XPos, NextSong1YPos, NextSong1XSize, NextSong1YSize, 3);
+  int nextSong1Index = (currentSong + 1) % numberOfSongs;
+  fill(Black);
+  textAlign(CENTER, CENTER);
+  textSize(NextSong1YSize * 0.5);
+  text(allSongTitles[nextSong1Index], NextSong1XPos, NextSong1YPos, NextSong1XSize, NextSong1YSize);
 
   // Next Song 2
+  fill(255);
   rect(NextSong2XPos, NextSong2YPos, NextSong2XSize, NextSong2YSize, 3);
+  int nextSong2Index = (currentSong + 2) % numberOfSongs;
+  fill(Black);
+  textAlign(CENTER, CENTER);
+  textSize(NextSong2YSize * 0.5);
+  text(allSongTitles[nextSong2Index], NextSong2XPos, NextSong2YPos, NextSong2XSize, NextSong2YSize);
 
   // Next Song 3
+  fill(255);
   rect(NextSong3XPos, NextSong3YPos, NextSong3XSize, NextSong3YSize, 3);
+  int nextSong3Index = (currentSong + 3) % numberOfSongs;
+  fill(Black);
+  textAlign(CENTER, CENTER);
+  textSize(NextSong3YSize * 0.5);
+  text(allSongTitles[nextSong3Index], NextSong3XPos, NextSong3YPos, NextSong3XSize, NextSong3YSize);
 
   // Progress Bar
+  fill(255);
   rect(ProgressBarXPos, ProgressBarYPos, ProgressBarXSize, ProgressBarYSize, 3);
 
 
