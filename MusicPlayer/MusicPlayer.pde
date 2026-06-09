@@ -365,7 +365,7 @@ void draw() {
   boolean HoveringOverButton = false;
   PlayButton = false;
 
-  // tooltip
+  // Variables to trace active tooltip
   String activeTooltip = "";
   float tooltipX = 0, tooltipY = 0;
 
@@ -450,13 +450,22 @@ void draw() {
   textSize(NextSong3YSize * 0.5);
   text(allSongTitles[nextSong3Index], NextSong3XPos, NextSong3YPos, NextSong3XSize, NextSong3YSize);
 
-  // Progress Bar
+  // Progress Bar Frame Background
   fill(255);
   rect(ProgressBarXPos, ProgressBarYPos, ProgressBarXSize, ProgressBarYSize, 3);
 
+  // Active Progress Rendering Fill
+  if (playlist[currentSong] != null && playlist[currentSong].length() > 0) {
+    float playheadRatio = float(playlist[currentSong].position()) / float(playlist[currentSong].length());
+    float calculatedProgressWidth = ProgressBarXSize * playheadRatio;
+    
+    fill(#301950); // Dark Purple match indicator accent
+    rect(ProgressBarXPos, ProgressBarYPos, calculatedProgressWidth, ProgressBarYSize, 3);
+  }
 
   // Right Side
   // Lyrics Container
+  fill(255);
   rect(LyricsContainerXPos, LyricsContainerYPos, LyricsContainerXSize, LyricsContainerYSize, 3);
 
   // Lyrics Title
@@ -567,7 +576,7 @@ void draw() {
     text(labels[i], targetX[i], targetY[i], targetWidths[i], targetHeights[i]);
   }
 
-  // Isolated Top-Layer Rendering for Active Tooltips 
+  // Active Tooltips 
   if (!activeTooltip.equals("")) {
     float txtSize = AppHeight * 20 / GUIHeight;
     textFont(Font, txtSize);
@@ -575,17 +584,16 @@ void draw() {
     float boxWidth = textWidth(activeTooltip) + (AppWidth * 20 / GUIWidth);
     float boxHeight = AppHeight * 30 / GUIHeight;
     
-    // Position adjustments centered above the button
     float boxX = tooltipX - (boxWidth / 2);
     float boxY = tooltipY - (boxHeight / 2);
     
-    // Tooltip Container Setup
-    fill(#301950);
+    // Tooltip
+    fill(#301950); // Dark Purple variant match
     stroke(0);
     strokeWeight(1);
     rect(boxX, boxY, boxWidth, boxHeight, 4);
     
-    // Tooltip Value Content
+    // Tooltip Value
     fill(255);
     textAlign(CENTER, CENTER);
     text(activeTooltip, boxX, boxY, boxWidth, boxHeight);
