@@ -365,6 +365,10 @@ void draw() {
   boolean HoveringOverButton = false;
   PlayButton = false;
 
+  // tooltip
+  String activeTooltip = "";
+  float tooltipX = 0, tooltipY = 0;
+
   // Left side
   // Main Container
   rect(MainContainerXPos, MainContainerYPos, MainContainerXSize, MainContainerYSize, 3);
@@ -480,6 +484,19 @@ void draw() {
     "VolumeUp",       // 11
   };
 
+    "Forward 5s",     // 1
+    "Forward 15s",    // 2
+    "Loop Continuous",// 3
+    "Previous Track", // 4
+    "Pause Track",    // 5
+    "Play Track",     // 6
+    "Stop / Rewind",  // 7
+    "Next Track",     // 8
+    "Toggle Mute",    // 9
+    "Volume Down",    // 10
+    "Volume Up"       // 11
+  };
+
   for (int i = 1; i <= Buttons.length; i++) {
     float ButtonWidth = AppWidth * 110/GUIWidth;
     float ButtonHeight = AppHeight * 110/GUIHeight;
@@ -494,6 +511,11 @@ void draw() {
       fill(150);
       HoveringOverButton = true;
       if (i == 6) PlayButton = true; 
+      
+      // Store current button data to process tooltips cleanly on top layout later
+      activeTooltip = ButtonTooltips[i - 1];
+      tooltipX = ButtonXPos + (ButtonWidth / 2);
+      tooltipY = ButtonYPos - (AppHeight * 30 / GUIHeight);
     } else {
       fill(255);
     }
@@ -542,6 +564,30 @@ void draw() {
   for (int i = 0; i < labels.length; i++) {
     textFont(Font, FontSizes[i]);
     text(labels[i], targetX[i], targetY[i], targetWidths[i], targetHeights[i]);
+  }
+
+  // Isolated Top-Layer Rendering for Active Tooltips 
+  if (!activeTooltip.equals("")) {
+    float txtSize = AppHeight * 20 / GUIHeight;
+    textFont(Font, txtSize);
+    
+    float boxWidth = textWidth(activeTooltip) + (AppWidth * 20 / GUIWidth);
+    float boxHeight = AppHeight * 30 / GUIHeight;
+    
+    // Position adjustments centered above the button
+    float boxX = tooltipX - (boxWidth / 2);
+    float boxY = tooltipY - (boxHeight / 2);
+    
+    // Tooltip Container Setup
+    fill(#301950);
+    stroke(0);
+    strokeWeight(1);
+    rect(boxX, boxY, boxWidth, boxHeight, 4);
+    
+    // Tooltip Value Content
+    fill(255);
+    textAlign(CENTER, CENTER);
+    text(activeTooltip, boxX, boxY, boxWidth, boxHeight);
   }
 
   fill(ResetInk);
