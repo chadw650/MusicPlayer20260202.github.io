@@ -484,6 +484,7 @@ void draw() {
     "VolumeUp",       // 11
   };
 
+  String[] ButtonTooltips = {
     "Forward 5s",     // 1
     "Forward 15s",    // 2
     "Loop Continuous",// 3
